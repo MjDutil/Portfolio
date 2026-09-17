@@ -60,19 +60,19 @@ export function Hero() {
                 </span>
 
                 <div className="hero-role">
-                  CREATIVE
+                  {t.hero.role.firstLine}
                   <br />
-                  FRONTEND DEVELOPER
+                  {t.hero.role.secondLine}
                 </div>
 
-                 <p className="hero-intro">
+                <p className="hero-intro">
                   {t.hero.description}
                 </p>
 
                 <div className="hero-buttons">
 
                   <a href="#projetos" className="button-primary">
-                    Ver projetos
+                    {t.hero.projectsButton}
                     <ArrowRight size={16} />
                   </a>
 
@@ -122,15 +122,15 @@ export function Hero() {
 
               <div>
                 <span className="info-card-label">
-                  CURRENTLY
+                  {t.hero.cards.currently.label}
                 </span>
 
                 <h3>
-                  Computer Engineering
+                  {t.hero.cards.currently.title}
                 </h3>
 
                 <p>
-                  Turning curiosity into opportunities.
+                  {t.hero.cards.currently.description}
                 </p>
               </div>
 
@@ -142,15 +142,15 @@ export function Hero() {
 
               <div>
                 <span className="info-card-label">
-                  SHIPPED
+                  {t.hero.cards.shipped.label}
                 </span>
 
                 <h3>
-                  Real projects with React & Next.js
+                  {t.hero.cards.shipped.title}
                 </h3>
 
                 <p>
-                  From ideas to working products.
+                  {t.hero.cards.shipped.description}
                 </p>
               </div>
 
@@ -162,15 +162,15 @@ export function Hero() {
 
               <div>
                 <span className="info-card-label">
-                  LEARNING
+                  {t.hero.cards.learning.label}
                 </span>
 
                 <h3>
-                  Better UI, always
+                  {t.hero.cards.learning.title}
                 </h3>
 
                 <p>
-                  Exploring, improving, leveling up.
+                  {t.hero.cards.learning.description}
                 </p>
               </div>
 
@@ -193,40 +193,42 @@ export function Hero() {
         {/* INFORMAÇÕES ABAIXO */}
         <div className="hero-meta">
 
-            <div className="hero-meta-item">
-              <div className="hero-meta-icon">
-                <MapPin size={19} strokeWidth={2.2} />
-              </div>
-
-              <div className="hero-meta-text">
-                <span>BASED IN</span>
-                <strong> SOROCABA, BRAZIL</strong>
-              </div>
+          <div className="hero-meta-item">
+            <div className="hero-meta-icon">
+              <MapPin size={19} strokeWidth={2.2} />
             </div>
 
-            <div className="hero-meta-item">
-              <div className="hero-meta-icon">
-                <Globe2 size={20} strokeWidth={2.1} />
-              </div>
-
-              <div className="hero-meta-text">
-                <span>AVAILABLE FOR</span>
-                <strong> INTERNSHIPS & OPPORTUNITIES</strong>
-              </div>
-            </div>
-
-            <div className="hero-meta-item">
-              <div className="hero-meta-icon">
-                <Sprout size={20} strokeWidth={2.2} />
-              </div>
-
-              <div className="hero-meta-text">
-                <span>INTERESTED IN</span>
-                <strong> PRODUCT · DESIGN · IMPACT</strong>
-              </div>
+            <div className="hero-meta-text">
+              <span>{t.hero.meta.basedIn.label}</span>
+              <strong> {t.hero.meta.basedIn.value}</strong>
             </div>
           </div>
+
+          <div className="hero-meta-item">
+            <div className="hero-meta-icon">
+              <Globe2 size={20} strokeWidth={2.1} />
+            </div>
+
+            <div className="hero-meta-text">
+              <span>{t.hero.meta.availableFor.label}</span>
+              <strong> {t.hero.meta.availableFor.value}</strong>
+            </div>
+          </div>
+
+          <div className="hero-meta-item">
+            <div className="hero-meta-icon">
+              <Sprout size={20} strokeWidth={2.2} />
+            </div>
+
+            <div className="hero-meta-text">
+              <span>{t.hero.meta.interestedIn.label}</span>
+              <strong> {t.hero.meta.interestedIn.value}</strong>
+            </div>
+          </div>
+
         </div>
+
+      </div>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import mirrorball from "../assets/mirrorball.png";
 
 export function Header() {
   const { language, setLanguage, t } = useLanguage();
@@ -7,20 +8,33 @@ export function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        <a href="#inicio" className="header-logo">
-          Maju Dutil
+
+        {/* LOGO */}
+        <a
+          href="#inicio"
+          className="header-logo"
+          aria-label="Maju Dutil"
+        >
+          <img
+            src={mirrorball}
+            alt=""
+            className="header-logo-image"
+          />
         </a>
 
+        {/* NAVEGAÇÃO */}
         <nav className="header-nav">
           <a href="#projetos">{t.header.work}</a>
           <a href="#sobre">{t.header.about}</a>
           <a href="#notas">{t.header.notes}</a>
         </nav>
 
+        {/* LADO DIREITO */}
         <div className="header-right">
+
           <div
             className="language-switch"
-            aria-label="Selecionar idioma"
+            aria-label={t.header.languageSelector}
           >
             <button
               type="button"
@@ -45,7 +59,9 @@ export function Header() {
             {t.header.contact}
             <ArrowRight size={16} />
           </a>
+
         </div>
+
       </div>
     </header>
   );

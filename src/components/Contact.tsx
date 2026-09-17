@@ -1,5 +1,6 @@
 import { ArrowRight, Mail } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Contact() {
   const { t } = useLanguage();
@@ -13,7 +14,7 @@ export function Contact() {
           {/* ESQUERDA */}
           <div className="contact-title-area">
 
-            <h2>{t("contactTitle")}</h2>
+            <h2>{t.contact.title}</h2>
 
             <span className="contact-spark">
               ✦
@@ -24,15 +25,15 @@ export function Contact() {
           {/* CENTRO */}
           <div className="contact-content">
 
-            <p>{t("contactText")}</p>
+            <p>{t.contact.text}</p>
 
             <div className="contact-actions">
 
               <a
-                href="mailto:SEUEMAIL@gmail.com"
+                href="mailto:mjuliadutil@gmail.com"
                 className="contact-button"
               >
-                {t("contactButton")}
+                {t.contact.button}
                 <ArrowRight size={16} />
               </a>
 
@@ -80,15 +81,15 @@ export function Contact() {
               <defs>
                 <path
                   id="friendship-ribbon-path"
-                 d="
-                  M 220 -25
-                  C 295 5, 310 50, 340 68
-                  C 375 90, 402 70, 430 48
-                  C 458 25, 492 20, 520 48
-                  C 550 80, 555 125, 565 165
-                  C 575 205, 592 228, 620 238
-                  C 640 250, 685 245, 735 235
-                "
+                  d="
+                    M 220 -25
+                    C 295 5, 310 50, 340 68
+                    C 375 90, 402 70, 430 48
+                    C 458 25, 492 20, 520 48
+                    C 550 80, 555 125, 565 165
+                    C 575 205, 592 228, 620 238
+                    C 640 250, 685 245, 735 235
+                  "
                 />
               </defs>
 
@@ -135,36 +136,4 @@ export function Contact() {
       </div>
     </section>
   );
-}
-
-function useLanguage(): { t: (key: string) => string } {
-  const translations = {
-    pt: {
-      contactTitle: "Vamos construir algo bom.",
-      contactText:
-        "Estou sempre aberta a novas oportunidades, projetos interessantes ou uma boa conversa sobre tecnologia, design e desenvolvimento.",
-      contactButton: "Entre em contato",
-    },
-    en: {
-      contactTitle: "Let’s build something good.",
-      contactText:
-        "I’m always open to new opportunities, interesting projects, or a good conversation about technology, design, and development.",
-      contactButton: "Get in touch",
-    },
-  } as const;
-
-  const getLocale = () => {
-    if (typeof window === "undefined") return "pt";
-    return localStorage.getItem("locale") ?? "pt";
-  };
-
-  const locale = getLocale();
-  const selected = translations[locale as keyof typeof translations] ?? translations.pt;
-
-  const t = (key: string) => {
-    const value = selected[key as keyof typeof selected];
-    return value ?? key;
-  };
-
-  return { t };
 }

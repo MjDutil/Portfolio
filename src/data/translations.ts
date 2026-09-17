@@ -7,78 +7,103 @@ export const translations = {
       contact: "Vamos conversar",
       languageSelector: "Selecionar idioma",
     },
+
     hero: {
-      hello: "OLÁ, EU SOU",
-      roleLine1: "DESENVOLVEDORA",
-      roleLine2: "FRONTEND CRIATIVA",
-      description:
-        "Transformo ideias em experiências digitais funcionais, bonitas e intuitivas.",
-      viewProjects: "Ver projetos",
-      niceLine1: "Prazer",
-      niceLine2: "em te",
-      niceLine3: "conhecer! ♡",
-      photoNoteLine1: "Grandes",
-      photoNoteLine2: "ideias,",
-      photoNoteLine3: "em telas",
-      photoNoteLine4: "menores ♡",
-      currently: "ATUALMENTE",
-      degree: "Engenharia da Computação",
-      degreeDescription: "Transformando curiosidade em oportunidades.",
-      shipped: "PROJETOS",
-      shippedTitle: "Projetos reais com React & Next.js",
-      shippedDescription: "De ideias a produtos digitais.",
-      learning: "APRENDENDO",
-      learningTitle: "Interfaces melhores, sempre",
-      learningDescription: "Explorando, melhorando e evoluindo.",
-      interfacesNoteLine1: "Boas",
-      interfacesNoteLine2: "interfaces,",
-      interfacesNoteLine3: "pessoas mais felizes.",
-      interfacesNoteLine4: "♡",
-      based: "LOCALIZAÇÃO",
-      location: "SOROCABA, BRASIL",
-      available: "DISPONÍVEL PARA",
-      availability: "ESTÁGIOS & OPORTUNIDADES",
-      interested: "INTERESSES",
-      interests: "PRODUTO · DESIGN · IMPACTO",
+    hello: "QUEM SOU EU",
+
+    role: {
+      firstLine: "DESENVOLVEDORA",
+      secondLine: "FRONTEND",
     },
+
+    description:
+      "Transformo ideias em experiências digitais funcionais, bonitas e intuitivas.",
+
+    projectsButton: "Ver projetos",
+
+    cards: {
+      currently: {
+        label: "ATUALMENTE",
+        title: "Engenharia da Computação",
+        description: "Transformando curiosidade em oportunidades.",
+      },
+
+      shipped: {
+        label: "PROJETOS",
+        title: "Projetos reais com React & Next.js",
+        description: "De ideias a produtos funcionais.",
+      },
+
+      learning: {
+        label: "APRENDENDO",
+        title: "Interfaces melhores, sempre",
+        description: "Explorando, melhorando e evoluindo.",
+      },
+    },
+
+    meta: {
+      basedIn: {
+        label: "LOCALIZADA EM",
+        value: "SOROCABA, BRASIL",
+      },
+
+      availableFor: {
+        label: "DISPONÍVEL PARA",
+        value: "ESTÁGIOS & OPORTUNIDADES",
+      },
+
+      interestedIn: {
+        label: "INTERESSES",
+        value: "PRODUTO · DESIGN · IMPACTO",
+      },
+    },
+},
+
     projects: {
-      heading: "Projetos selecionados",
-      detail: "ALGUNS PROJETOS DOS QUAIS ME ORGULHO",
-      viewAll: "Ver projetos",
-      climateCoverMeta: "WEB · TECNOLOGIA · INTERFACE",
-      climateDescription:
-        "Plataforma para visualização de dados climáticos e geossociais em cenários de risco.",
-      projectNumber: "PROJETO / 02",
-      duCoverDescription:
-        "Mobilidade pensada para o ambiente universitário.",
-      duDescription:
-        "Aplicação de mobilidade colaborativa para conectar e facilitar o transporte entre universitários.",
-      responsive: "Responsividade",
-      accessibility: "Acessibilidade",
+      heading: "Projetos",
+      detail: "ONDE DESIGN, PRODUTO E CÓDIGO SE ENCONTRAM.",
+      viewAll: "Ver todos",
+
+      climateShield: {
+        coverCategory: "WEB · TECNOLOGIA · INTERFACE",
+        description:
+          "Plataforma para visualização de dados climáticos e geossociais em cenários de risco.",
+
+        tags: {
+          responsive: "Responsividade",
+          accessibility: "Acessibilidade",
+        },
+      },
+
+      du: {
+        coverDescription:
+          "Mobilidade pensada para o ambiente universitário.",
+
+        description:
+          "Aplicação de mobilidade colaborativa para conectar e facilitar o transporte entre universitários.",
+      },
     },
+
     toolbox: {
-      title: "Minhas ferramentas",
-      subtitle: "TECNOLOGIAS COM AS QUAIS TRABALHO (E GOSTO)",
-      note: "Ferramentas para transformar ideias em realidade. ♡",
+      title: "Kit de ferramentas",
+      subtitle: "TECNOLOGIAS COM AS QUAIS TRABALHO (E AMO ♡)",
     },
+
     contact: {
-      titleLine1: "Vamos construir",
-      titleLine2: "algo bom.",
-      description:
-        "Estou sempre aberta a novas oportunidades, projetos interessantes ou uma boa conversa sobre tecnologia, design e desenvolvimento.",
+      title: "Onde boas ideias viram produto.",
+      text: "Chegou até aqui? Então acho que já temos assunto.",
       button: "Entre em contato",
-      emailLabel: "E-mail",
     },
+
     footer: {
-      role: "Desenvolvedora Frontend",
-      messageLead: "Pequenos detalhes.",
-      messageEmphasis: "Uma web mais bonita.",
+      frontendDeveloper: "Desenvolvedora Frontend",
       home: "Início",
       projects: "Projetos",
       technologies: "Tecnologias",
       contact: "Contato",
     },
   },
+
   en: {
     header: {
       work: "Work",
@@ -89,72 +114,96 @@ export const translations = {
     },
     hero: {
       hello: "HELLO, I'M",
-      roleLine1: "CREATIVE",
-      roleLine2: "FRONTEND DEVELOPER",
+
+      role: {
+        firstLine: "CREATIVE",
+        secondLine: "FRONTEND DEVELOPER",
+      },
+
       description:
         "I turn ideas into functional, beautiful and intuitive digital experiences.",
-      viewProjects: "View projects",
-      niceLine1: "Nice",
-      niceLine2: "to meet",
-      niceLine3: "you! ♡",
-      photoNoteLine1: "Same",
-      photoNoteLine2: "big ideas,",
-      photoNoteLine3: "smaller",
-      photoNoteLine4: "screens ♡",
-      currently: "CURRENTLY",
-      degree: "Computer Engineering",
-      degreeDescription: "Turning curiosity into opportunities.",
-      shipped: "SHIPPED",
-      shippedTitle: "Real projects with React & Next.js",
-      shippedDescription: "From ideas to working products.",
-      learning: "LEARNING",
-      learningTitle: "Better UI, always",
-      learningDescription: "Exploring, improving, leveling up.",
-      interfacesNoteLine1: "Good",
-      interfacesNoteLine2: "interfaces,",
-      interfacesNoteLine3: "happier people.",
-      interfacesNoteLine4: "♡",
-      based: "BASED IN",
-      location: "SOROCABA, BRAZIL",
-      available: "AVAILABLE FOR",
-      availability: "INTERNSHIPS & OPPORTUNITIES",
-      interested: "INTERESTED IN",
-      interests: "PRODUCT · DESIGN · IMPACT",
+
+      projectsButton: "View projects",
+
+      cards: {
+        currently: {
+          label: "CURRENTLY",
+          title: "Computer Engineering",
+          description: "Turning curiosity into opportunities.",
+        },
+
+        shipped: {
+          label: "SHIPPED",
+          title: "Real projects with React & Next.js",
+          description: "From ideas to working products.",
+        },
+
+        learning: {
+          label: "LEARNING",
+          title: "Better UI, always",
+          description: "Exploring, improving, leveling up.",
+        },
+      },
+
+      meta: {
+        basedIn: {
+          label: "BASED IN",
+          value: "SOROCABA, BRAZIL",
+        },
+
+        availableFor: {
+          label: "AVAILABLE FOR",
+          value: "INTERNSHIPS & OPPORTUNITIES",
+        },
+
+        interestedIn: {
+          label: "INTERESTED IN",
+          value: "PRODUCT · DESIGN · IMPACT",
+        },
+      },
     },
+
     projects: {
-      heading: "Selected Work",
-      detail: "A FEW PROJECTS I'M PROUD OF",
-      viewAll: "View projects",
-      climateCoverMeta: "WEB · TECHNOLOGY · INTERFACE",
-      climateDescription:
-        "A platform for visualizing climate and geosocial data in risk scenarios.",
-      projectNumber: "PROJECT / 02",
-      duCoverDescription:
-        "Mobility designed for the university environment.",
-      duDescription:
-        "A collaborative mobility app designed to connect university students and make transportation easier.",
-      responsive: "Responsive",
-      accessibility: "Accessibility",
+      heading: "Projects",
+      detail: "WHERE DESIGN, PRODUCT AND CODE COME TOGETHER.",
+      viewAll: "View all",
+
+      climateShield: {
+        coverCategory: "WEB · TECHNOLOGY · INTERFACE",
+        description:
+          "A platform for visualizing climate and geosocial data in risk scenarios.",
+
+        tags: {
+          responsive: "Responsive Design",
+          accessibility: "Accessibility",
+        },
+      },
+
+      du: {
+        coverDescription:
+          "Mobility designed for the university environment.",
+
+        description:
+          "A collaborative mobility app designed to connect university students and make transportation easier.",
+      },
     },
+
+
     toolbox: {
       title: "My Toolbox",
-      subtitle: "TECHNOLOGIES I WORK WITH (AND LOVE)",
-      note: "Tools to turn ideas into reality. ♡",
+      subtitle: "TECHNOLOGIES I WORK WITH (AND LOVE ♡)",
     },
+
     contact: {
-      titleLine1: "Let's build",
-      titleLine2: "something good.",
-      description:
-        "I'm always open to new opportunities, interesting projects, or a good conversation about technology, design and development.",
+      title: "Where good ideas become products.",
+      text: "Made it this far? Then I think we already have something to talk about.",
       button: "Get in touch",
-      emailLabel: "Email",
     },
+
     footer: {
-      role: "Frontend Developer",
-      messageLead: "Small details.",
-      messageEmphasis: "A brighter web.",
+      frontendDeveloper: "Frontend Developer",
       home: "Home",
-      projects: "Work",
+      projects: "Projects",
       technologies: "Technologies",
       contact: "Contact",
     },

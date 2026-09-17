@@ -12,7 +12,11 @@ import { FaGithub, FaGitAlt } from "react-icons/fa";
 import { VscCode } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
 
+import { useLanguage } from "../context/LanguageContext";
+
 export function Toolbox() {
+  const { t } = useLanguage();
+
   const tools = [
     {
       name: "React",
@@ -63,11 +67,17 @@ export function Toolbox() {
   return (
     <section className="toolbox" id="tecnologias">
       <div className="toolbox-container">
+
         <div className="toolbox-heading">
-          <h2>My Toolbox</h2>
+
+          <h2>
+            {t.toolbox.title}
+          </h2>
 
           <div className="toolbox-heading-detail">
-            <span>TECHNOLOGIES I WORK WITH (AND LOVE)</span>
+            <span>
+              {t.toolbox.subtitle}
+            </span>
 
             <div className="toolbox-line" />
           </div>
@@ -79,19 +89,25 @@ export function Toolbox() {
             <br />
             into reality. ♡
           </span>
+
         </div>
 
         <div className="toolbox-list">
           {tools.map((tool) => (
             <div className="toolbox-item" key={tool.name}>
+
               <div className="toolbox-icon">
                 {tool.icon}
               </div>
 
-              <span>{tool.name}</span>
+              <span>
+                {tool.name}
+              </span>
+
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

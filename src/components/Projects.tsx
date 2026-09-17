@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Projects() {
   const { t } = useLanguage();
@@ -55,7 +56,9 @@ export function Projects() {
                 </h3>
 
                 <div className="project-window-bottom">
-                  <span>WEB · TECNOLOGIA · INTERFACE</span>
+                  <span>
+                    {t.projects.climateShield.coverCategory}
+                  </span>
 
                   <ArrowUpRight size={28} />
                 </div>
@@ -64,27 +67,26 @@ export function Projects() {
             </div>
 
             <div className="project-info">
-                <div>
-                    <h3>Climate Shield</h3>
+              <div>
+                <h3>Climate Shield</h3>
 
-                    <p>
-                    Plataforma para visualização de dados climáticos e geossociais
-                    em cenários de risco.
-                    </p>
-                </div>
+                <p>
+                  {t.projects.climateShield.description}
+                </p>
+              </div>
 
-                <div className="project-year">
-                    2025
-                    <ArrowUpRight size={18} />
-                </div>
-                </div>
+              <div className="project-year">
+                2025
+                <ArrowUpRight size={18} />
+              </div>
+            </div>
 
-                <div className="project-tags">
-                <span>React.js</span>
-                <span>REST APIs</span>
-                <span>Responsividade</span>
-                <span>Acessibilidade</span>
-                </div>
+            <div className="project-tags">
+              <span>React.js</span>
+              <span>REST APIs</span>
+              <span>{t.projects.climateShield.tags.responsive}</span>
+              <span>{t.projects.climateShield.tags.accessibility}</span>
+            </div>
 
           </article>
 
@@ -111,7 +113,7 @@ export function Projects() {
                 </h3>
 
                 <p>
-                  Mobilidade pensada para o ambiente universitário.
+                  {t.projects.du.coverDescription}
                 </p>
 
                 <ArrowUpRight
@@ -124,27 +126,26 @@ export function Projects() {
             </div>
 
             <div className="project-info">
-                <div>
-                    <h3>DU — Driver Universitário</h3>
+              <div>
+                <h3>DU — Driver Universitário</h3>
 
-                    <p>
-                    Aplicação de mobilidade colaborativa para conectar e facilitar
-                    o transporte entre universitários.
-                    </p>
-                </div>
+                <p>
+                  {t.projects.du.description}
+                </p>
+              </div>
 
-                <div className="project-year">
-                    2025
-                    <ArrowUpRight size={18} />
-                </div>
-                </div>
+              <div className="project-year">
+                2025
+                <ArrowUpRight size={18} />
+              </div>
+            </div>
 
-                <div className="project-tags">
-                <span>React Native</span>
-                <span>JavaScript</span>
-                <span>UI/UX</span>
-                <span>Mobile</span>
-                </div>
+            <div className="project-tags">
+              <span>React Native</span>
+              <span>JavaScript</span>
+              <span>UI/UX</span>
+              <span>Mobile</span>
+            </div>
 
           </article>
 
@@ -153,38 +154,4 @@ export function Projects() {
       </div>
     </section>
   );
-}
-
-function useLanguage(): {
-  t: {
-    projects: {
-      heading: string;
-      detail: string;
-      viewAll: string;
-    };
-  };
-} {
-  const translations = {
-    pt: {
-      projects: {
-        heading: "Projetos",
-        detail: "Soluções digitais com foco em produto, experiência e impacto real.",
-        viewAll: "Ver todos",
-      },
-    },
-    en: {
-      projects: {
-        heading: "Projects",
-        detail: "Digital solutions focused on product, experience, and real impact.",
-        viewAll: "View all",
-      },
-    },
-  } as const;
-
-  const locale =
-    typeof navigator !== "undefined" && navigator.language.toLowerCase().startsWith("en")
-      ? "en"
-      : "pt";
-
-  return { t: translations[locale] };
-}
+};
