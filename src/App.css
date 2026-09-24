@@ -296,7 +296,9 @@
 .hero-name-julia {
   font-family: var(--font-serif);
 
-  font-size: clamp(92px, 7.3vw, 140px);
+  /* Para de crescer junto com o hero (1440px + margens = 1536px de tela);
+     acima disso a coluna não aumenta e "Maria" invadiria o "Júlia". */
+  font-size: clamp(92px, 7.3vw, 112px);
 
   letter-spacing: -5px;
 
@@ -369,6 +371,9 @@
 
 /* NOTAS MANUSCRITAS */
 
+/* As notas ficam sem z-index de propósito: com z-index, o navegador as
+   transforma em imagem quando um vizinho anima no hover, e o texto girado
+   fica embaçado. */
 .handwritten {
   font-family: var(--font-hand);
 
@@ -394,8 +399,6 @@
 
   font-size: 29px;
   line-height: 0.95;
-
-  z-index: 2;
 }
 
 /* BOTÕES */
@@ -1300,8 +1303,6 @@
   transform: rotate(-6deg);
 
   font-size: 26px;
-
-  z-index: 2;
 }
 
 /* ======================================
