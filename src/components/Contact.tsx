@@ -1,6 +1,7 @@
 import { ArrowRight, Mail } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
+import { profile } from "../data/profile";
 
 export function Contact() {
   const { t } = useLanguage();
@@ -9,14 +10,14 @@ export function Contact() {
     <section className="contact" id="contato">
       <div className="contact-container">
 
-        <div className="contact-card">
+        <div className="contact-card" data-reveal>
 
           {/* ESQUERDA */}
           <div className="contact-title-area">
 
             <h2>{t.contact.title}</h2>
 
-            <span className="contact-spark">
+            <span className="contact-spark" aria-hidden="true">
               ✦
             </span>
 
@@ -30,7 +31,7 @@ export function Contact() {
             <div className="contact-actions">
 
               <a
-                href="mailto:mjuliadutil@gmail.com"
+                href={`mailto:${profile.email}`}
                 className="contact-button"
               >
                 {t.contact.button}
@@ -40,7 +41,7 @@ export function Contact() {
               <div className="contact-socials">
 
                 <a
-                  href="https://github.com/MjDutil"
+                  href={profile.github}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub"
@@ -49,7 +50,7 @@ export function Contact() {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/majudutil"
+                  href={profile.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
@@ -58,7 +59,7 @@ export function Contact() {
                 </a>
 
                 <a
-                  href="mailto:mjuliadutil@gmail.com"
+                  href={`mailto:${profile.email}`}
                   aria-label="E-mail"
                 >
                   <Mail size={19} />

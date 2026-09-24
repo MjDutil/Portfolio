@@ -1,0 +1,489 @@
+/* GeoShield — página do estudo de caso (o fichário tem CSS próprio). */
+.geoshield-page {
+  min-height: 100vh;
+  background: var(--cream);
+  color: #111;
+  font-family: "DM Sans", sans-serif;
+}
+
+.geoshield-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.geoshield-hero-eyebrow,
+.geoshield-meta-item > span,
+.geoshield-scroll-link {
+  color: #77726b;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+}
+
+.geoshield-page a:focus-visible {
+  outline: 3px solid #16845a;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   GEOSHIELD — APRESENTAÇÃO
+========================================= */
+
+.geoshield-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 40px 0 34px;
+}
+
+/* Formas decorativas do fundo */
+
+.geoshield-hero-circle {
+  position: absolute;
+  z-index: -1;
+  top: -230px;
+  left: -230px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: #dbe8dd;
+  box-shadow:
+    0 0 0 70px #e5eee8,
+    0 0 0 140px rgba(229, 238, 232, 0.55);
+  pointer-events: none;
+}
+
+.geoshield-hero-wave {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 170px;
+  fill: #a8b69f;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* Identificação e botão na mesma linha */
+
+.geoshield-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 35px;
+}
+
+.geoshield-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  text-transform: uppercase;
+}
+
+.geoshield-hero-number { color: #426348; }
+
+.geoshield-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  color: #292723;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.geoshield-back:hover { opacity: 0.6; }
+
+/* =========================================
+   SHOWCASE — TEXTO + DUAS CAPTURAS
+========================================= */
+
+.gs-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 56px;
+  padding: 20px 0 30px;
+}
+
+.gs-showcase-copy { min-width: 0; }
+
+.gs-showcase-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.12em;
+  margin: 0;
+  color: #111;
+  font: 400 clamp(64px, 7.5vw, 116px) / 0.92 "Instrument Serif", serif;
+  letter-spacing: -0.045em;
+}
+
+.gs-showcase-title-spark {
+  margin-top: 0.12em;
+  color: #a8b69f;
+  font-size: 0.4em;
+  letter-spacing: 0;
+}
+
+.gs-showcase-subtitle {
+  max-width: 520px;
+  margin: 16px 0 22px;
+  color: #426348;
+  font: italic 400 clamp(26px, 2.6vw, 38px) / 1.1 "Instrument Serif", serif;
+}
+
+.gs-showcase-text {
+  max-width: 460px;
+  margin: 0 0 24px;
+  color: #625f59;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.gs-showcase-author {
+  display: block;
+  margin-bottom: 18px;
+  color: #426348;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.gs-showcase-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gs-showcase-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #cfd6c8;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #334334;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Capturas sobrepostas: a da frente no alto à esquerda,
+   a de trás deslocada para baixo e para a direita. */
+
+.gs-showcase-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.6 / 1;
+}
+
+.gs-showcase-card {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(37, 53, 41, 0.08);
+  border-radius: 20px;
+  background: #fff;
+  animation: gs-card-rise 0.7s ease both;
+}
+
+.gs-showcase-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gs-showcase-card--front {
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 86%;
+  box-shadow:
+    0 2px 6px rgba(28, 36, 30, 0.06),
+    0 18px 36px rgba(28, 36, 30, 0.14),
+    0 40px 80px rgba(28, 36, 30, 0.12);
+  animation-delay: 0.1s;
+}
+
+.gs-showcase-card--back {
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  width: 82%;
+  box-shadow:
+    0 2px 6px rgba(28, 36, 30, 0.05),
+    0 16px 34px rgba(28, 36, 30, 0.12),
+    0 32px 64px rgba(28, 36, 30, 0.10);
+  animation-delay: 0.25s;
+}
+
+.gs-showcase-spark {
+  position: absolute;
+  z-index: 3;
+  top: -38px;
+  left: -10px;
+  color: #253529;
+  font-size: 40px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+@keyframes gs-card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   INFORMAÇÕES DO PROJETO
+========================================= */
+
+.geoshield-project-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr auto;
+  gap: 24px;
+  margin-top: 32px;
+  padding: 25px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.geoshield-meta-item { display: flex; flex-direction: column; gap: 8px; }
+.geoshield-meta-item strong { color: #25231f; font-size: 13px; font-weight: 600; }
+
+.geoshield-scroll-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  text-decoration: none;
+  color: #625f59;
+}
+
+.geoshield-scroll-link:hover { opacity: 0.65; }
+
+/* =========================================
+   PRÓXIMO PROJETO
+========================================= */
+
+.gs-next { padding: 10px 0 80px; }
+
+.gs-next-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 30px;
+  padding: 34px 38px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #efe9fa 0%, var(--lilac) 100%);
+}
+
+.gs-next-copy { position: relative; z-index: 1; max-width: 560px; }
+
+.gs-next-label {
+  display: block;
+  margin-bottom: 12px;
+  color: #5b5470;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.gs-next h2 {
+  margin: 0 0 10px;
+  font: 400 clamp(34px, 3.6vw, 50px)/1 var(--font-serif);
+  color: var(--ink);
+}
+
+.gs-next p {
+  margin: 0;
+  color: #4d4a58;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.gs-next-side {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.gs-next-all {
+  color: #3a3645;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.gs-next-all:hover { opacity: 0.6; }
+
+.gs-next-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: translate 0.25s var(--ease-out), background 0.2s ease;
+}
+
+.gs-next-button:hover { translate: 0 -2px; background: var(--ink-soft); }
+
+/* "DU." gigante e vazado ao fundo, como no nome do hero */
+.gs-next-mark {
+  position: absolute;
+  right: 26%;
+  bottom: -38px;
+  font: italic 400 190px/1 var(--font-serif);
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(17, 17, 17, 0.16);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Botão do GitHub no topo da página */
+.gs-showcase-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  min-height: 44px;
+  margin-top: 22px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: translate 0.25s var(--ease-out), background 0.2s ease;
+}
+
+.gs-showcase-github:hover { translate: 0 -2px; background: var(--ink-soft); }
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1100px) {
+  .gs-showcase {
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
+
+  .gs-showcase-copy { max-width: 640px; }
+
+  .gs-showcase-media {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .geoshield-project-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .geoshield-scroll-link { justify-content: flex-start; }
+}
+
+@media (max-width: 768px) {
+  .geoshield-container {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .geoshield-hero { padding: 30px 0 25px; }
+
+  .geoshield-hero-circle {
+    top: -160px;
+    left: -160px;
+    width: 260px;
+    height: 260px;
+    box-shadow:
+      0 0 0 45px #e5eee8,
+      0 0 0 90px rgba(229, 238, 232, 0.55);
+  }
+
+  .geoshield-hero-wave { height: 110px; }
+
+  .geoshield-hero-top {
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .geoshield-hero-eyebrow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .geoshield-back { font-size: 11px; }
+
+  .gs-showcase {
+    gap: 52px;
+    padding: 10px 0 20px;
+  }
+
+  .gs-showcase-title { font-size: clamp(56px, 15vw, 84px); }
+  .gs-showcase-text { font-size: 14px; }
+
+  .gs-showcase-card { border-radius: 14px; }
+  .gs-showcase-card--front { width: 92%; }
+  .gs-showcase-card--back { width: 78%; }
+
+  .gs-showcase-spark {
+    top: -30px;
+    left: 0;
+    font-size: 28px;
+  }
+
+  .geoshield-project-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 12px;
+  }
+
+  .geoshield-meta-item strong { font-size: 12px; }
+
+  .gs-next { padding: 0 0 50px; }
+
+  .gs-next-card {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: 28px 22px;
+  }
+
+  .gs-next-side {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .gs-next-mark { right: -10px; bottom: -30px; font-size: 140px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-showcase-card { animation: none; }
+}

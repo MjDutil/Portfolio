@@ -1,75 +1,50 @@
-# React + TypeScript + Vite
+# Maria Júlia Dutil · Portfólio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfólio pessoal de desenvolvimento frontend, em português e inglês.
 
-Currently, two official plugins are available:
+**Stack:** React 19 · TypeScript · Vite · React Router
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Rodando localmente
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev      # ambiente de desenvolvimento
+npm run build    # gera a versão de produção em dist/
+npm run preview  # abre a versão de produção localmente
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estrutura
 
 ```
+src/
+  components/   seções da página inicial (Header, Hero, Projects, Toolbox, Contact, Footer)
+  pages/        estudos de caso dos projetos (ex.: GeoShield)
+  data/         textos do site em PT e EN (translations.ts)
+  context/      troca de idioma
+public/
+  projects/     capturas de tela dos projetos
+  og-image.jpg  imagem de prévia do link em redes sociais
+```
+
+Todos os textos ficam em `src/data/translations.ts`, então para mudar uma frase não é preciso mexer nos componentes.
+
+## Publicação
+
+O build gera também um `404.html` (cópia do `index.html`), para que links diretos como `/projetos/geoshield` funcionem em hospedagens estáticas como o GitHub Pages.
+
+## Telas do DU
+
+A página `/projetos/du` já está pronta e mostra espaços reservados até as imagens existirem.
+Salve os prints (em pé, do jeito que aparecem no celular) em `public/projects/du/` com estes nomes:
+
+| Arquivo | Tela |
+|---|---|
+| `home.png` | Buscar motoristas (celular do meio, no topo e na capa da home) |
+| `chat.png` | Lista de conversas |
+| `tracking.png` | Rastreamento da corrida |
+| `finish.png` | Finalização + avaliação |
+| `signup-1-invite.png` … `signup-7-password.png` | Cadastro: convite, nome, apelido, contato, tratamento, nascimento, senha |
+| `offer-1-driver.png` … `offer-6-price.png` | Oferecer carona: CNH, carro, rota, datas, vagas, valor |
+
+Os nomes completos, as cores do app, o trecho de código opcional e o link do repositório ficam em `src/data/du.ts`.
+Rodando `npm run dev`, cada espaço reservado mostra o caminho do arquivo que está faltando.

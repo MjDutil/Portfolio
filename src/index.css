@@ -1,10 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap");
 
 :root {
-  font-family: "DM Sans", sans-serif;
+  /* ======================================
+     PALETA
+     Creme e tinta são a base. Os pastéis são de apoio:
+     cada um tem uma função (ou um projeto) para não virar bagunça.
+  ====================================== */
 
-  color: #111111;
-  background: #f7f3ec;
+  --cream: #f7f3ec;
+  --cream-deep: #efe9df;
+  --ink: #111111;
+  --ink-soft: #292929;
+  --text-muted: #68635d;
+  --line: #d9d3ca;
+
+  --sage: #a8b59f;       /* foto do hero, faixa do contato */
+  --sage-soft: #dfe3d3;  /* card "Atualmente" */
+  --peach: #f4cbbb;      /* card "Projetos" */
+  --lilac: #ddd4f2;      /* card "Aprendendo", marquee, sticker */
+  --lilac-deep: #c9bcec;
+  --butter: #f4e7b8;     /* destaques pequenos */
+  --mist: #ccd8ee;       /* projeto GeoShield */
+
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  font-family: var(--font-sans);
+
+  color: var(--ink);
+  background: var(--cream);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,14 +47,35 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Deixa um respiro acima da seção quando ela é aberta por um link do menu */
+[id] {
+  scroll-margin-top: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   margin: 0;
 
   min-width: 320px;
   min-height: 100vh;
 
-  background: #f7f3ec;
-  color: #111111;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--lilac);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
 }
 
 button,
@@ -52,4 +99,14 @@ h2,
 h3,
 p {
   margin: 0;
+}
+/* Para quem pediu menos movimento no sistema: desliga animações e transições */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,5 +1,9 @@
-import { ArrowUpRight } from "lucide-react";
+import type { CSSProperties } from "react";
+import { ArrowUpRight, Bug, CloudRain, Flame, ShieldPlus } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
+import { PhoneFrame } from "./PhoneFrame";
+import { duScreens } from "../data/du";
 
 export function Projects() {
   const { t } = useLanguage();
@@ -9,18 +13,13 @@ export function Projects() {
       <div className="projects-container">
 
         {/* CABEÇALHO */}
-        <div className="projects-heading">
+        <div className="projects-heading" data-reveal>
           <h2>{t.projects.heading}</h2>
 
           <div className="projects-heading-detail">
             <span>{t.projects.detail}</span>
             <div className="projects-heading-line" />
           </div>
-
-          <a href="#projetos" className="projects-view-all">
-            {t.projects.viewAll}
-            <ArrowUpRight size={16} />
-          </a>
         </div>
 
         {/* PROJETOS */}
@@ -29,9 +28,18 @@ export function Projects() {
           {/* ==============================
               PROJETO 01 — GEOSHIELD
           =============================== */}
-          <article className="project-card">
+          <article
+            className="project-card project-card--geoshield"
+            data-reveal
+          >
 
-            <div className="project-cover project-cover-green">
+            <Link
+              to="/projetos/geoshield"
+              className="project-card-link"
+              aria-label={t.projects.GeoShield.linkLabel}
+            />
+
+            <div className="project-cover project-cover-mist">
 
               <span className="project-cover-brand">
                 GEOSHIELD
@@ -57,21 +65,42 @@ export function Projects() {
 
                 <div className="project-window-bottom">
                   <span>
-                    {t.projects.climateShield.coverCategory}
+                    {t.projects.GeoShield.coverCategory}
                   </span>
-
-                  <ArrowUpRight size={28} />
                 </div>
+
+              </div>
+
+              {/* Captura do mapa com os marcadores do app */}
+              <div className="project-cover-map" aria-hidden="true">
+                <img
+                  src="/projects/geoshield/map-desktop.webp"
+                  alt=""
+                  loading="lazy"
+                />
+
+                <span className="map-pin map-pin--green">
+                  <ShieldPlus size={14} strokeWidth={2.2} />
+                </span>
+                <span className="map-pin map-pin--orange">
+                  <Bug size={14} strokeWidth={2.2} />
+                </span>
+                <span className="map-pin map-pin--red">
+                  <Flame size={14} strokeWidth={2.2} />
+                </span>
+                <span className="map-pin map-pin--blue">
+                  <CloudRain size={14} strokeWidth={2.2} />
+                </span>
 
               </div>
             </div>
 
             <div className="project-info">
               <div>
-                <h3>Climate Shield</h3>
+                <h3>GeoShield</h3>
 
                 <p>
-                  {t.projects.climateShield.description}
+                  {t.projects.GeoShield.description}
                 </p>
               </div>
 
@@ -82,10 +111,10 @@ export function Projects() {
             </div>
 
             <div className="project-tags">
-              <span>React.js</span>
-              <span>REST APIs</span>
-              <span>{t.projects.climateShield.tags.responsive}</span>
-              <span>{t.projects.climateShield.tags.accessibility}</span>
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Mapbox GL JS</span>
+              <span>{t.projects.GeoShield.tags.responsive}</span>
             </div>
 
           </article>
@@ -94,9 +123,19 @@ export function Projects() {
           {/* ==============================
               PROJETO 02 — DU
           =============================== */}
-          <article className="project-card">
+          <article
+            className="project-card project-card--du"
+            data-reveal
+            style={{ "--reveal-delay": "120ms" } as CSSProperties}
+          >
 
-            <div className="project-cover project-cover-soft">
+            <Link
+              to="/projetos/du"
+              className="project-card-link"
+              aria-label={t.projects.du.linkLabel}
+            />
+
+            <div className="project-cover project-cover-lilac">
 
               <div className="project-placeholder">
 
@@ -116,10 +155,18 @@ export function Projects() {
                   {t.projects.du.coverDescription}
                 </p>
 
-                <ArrowUpRight
-                  className="project-placeholder-arrow"
-                  size={32}
-                />
+                <div className="project-cover-phones" aria-hidden="true">
+                  <PhoneFrame
+                    src={duScreens.chat}
+                    label={t.duPage.screens.chat}
+                    className="phone--mini project-phone-back"
+                  />
+                  <PhoneFrame
+                    src={duScreens.home}
+                    label={t.duPage.screens.home}
+                    className="phone--mini project-phone-front"
+                  />
+                </div>
 
               </div>
 
@@ -135,15 +182,15 @@ export function Projects() {
               </div>
 
               <div className="project-year">
-                2025
+                2026
                 <ArrowUpRight size={18} />
               </div>
             </div>
 
             <div className="project-tags">
               <span>React Native</span>
-              <span>JavaScript</span>
-              <span>UI/UX</span>
+              <span>TypeScript</span>
+              <span>Expo</span>
               <span>Mobile</span>
             </div>
 
@@ -154,4 +201,4 @@ export function Projects() {
       </div>
     </section>
   );
-};
+}

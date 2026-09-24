@@ -1,3 +1,4 @@
+import type { CSSProperties, ReactNode } from "react";
 import {
   SiReact,
   SiNextdotjs,
@@ -9,66 +10,46 @@ import {
 } from "react-icons/si";
 
 import { FaGithub, FaGitAlt } from "react-icons/fa";
-import { VscCode } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
 
 import { useLanguage } from "../context/LanguageContext";
 
+type Tool = {
+  name: string;
+  icon: ReactNode;
+};
+
+// Ferramentas separadas por categoria.
+// Cada grupo tem 5 itens para as linhas ficarem sempre completas.
+const frontendTools: Tool[] = [
+  { name: "React", icon: <SiReact size={24} /> },
+  { name: "Next.js", icon: <SiNextdotjs size={24} /> },
+  { name: "TypeScript", icon: <SiTypescript size={24} /> },
+  { name: "JavaScript", icon: <SiJavascript size={24} /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={24} /> },
+];
+
+const workflowTools: Tool[] = [
+  { name: "Figma", icon: <SiFigma size={24} /> },
+  { name: "Git", icon: <FaGitAlt size={24} /> },
+  { name: "GitHub", icon: <FaGithub size={24} /> },
+  { name: "Docker", icon: <SiDocker size={25} /> },
+  { name: "APIs REST", icon: <TbApi size={25} /> },
+];
+
 export function Toolbox() {
   const { t } = useLanguage();
 
-  const tools = [
-    {
-      name: "React",
-      icon: <SiReact size={24} />,
-    },
-    {
-      name: "Next.js",
-      icon: <SiNextdotjs size={24} />,
-    },
-    {
-      name: "TypeScript",
-      icon: <SiTypescript size={24} />,
-    },
-    {
-      name: "JavaScript",
-      icon: <SiJavascript size={24} />,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: <SiTailwindcss size={24} />,
-    },
-    {
-      name: "Figma",
-      icon: <SiFigma size={24} />,
-    },
-    {
-      name: "Git",
-      icon: <FaGitAlt size={24} />,
-    },
-    {
-      name: "GitHub",
-      icon: <FaGithub size={24} />,
-    },
-    {
-      name: "Docker",
-      icon: <SiDocker size={25} />,
-    },
-    {
-      name: "APIs REST",
-      icon: <TbApi size={25} />,
-    },
-    {
-      name: "VS Code",
-      icon: <VscCode size={24} />,
-    },
+  const groups = [
+    { key: "frontend", label: t.toolbox.groups.frontend, tools: frontendTools },
+    { key: "workflow", label: t.toolbox.groups.workflow, tools: workflowTools },
   ];
 
   return (
     <section className="toolbox" id="tecnologias">
       <div className="toolbox-container">
 
-        <div className="toolbox-heading">
+        <div className="toolbox-heading" data-reveal>
 
           <h2>
             {t.toolbox.title}
@@ -92,17 +73,35 @@ export function Toolbox() {
 
         </div>
 
-        <div className="toolbox-list">
-          {tools.map((tool) => (
-            <div className="toolbox-item" key={tool.name}>
+        <div className="toolbox-groups">
+          {groups.map((group, index) => (
+            <div
+              className={`toolbox-group toolbox-group--${group.key}`}
+              key={group.key}
+              data-reveal
+              style={{ "--reveal-delay": `${index * 120}ms` } as CSSProperties}
+            >
 
-              <div className="toolbox-icon">
-                {tool.icon}
-              </div>
-
-              <span>
-                {tool.name}
+              <span className="toolbox-group-label">
+                <span className="toolbox-group-number">0{index + 1}</span>
+                {group.label}
               </span>
+
+              <ul className="toolbox-list">
+                {group.tools.map((tool) => (
+                  <li className="toolbox-item" key={tool.name}>
+
+                    <span className="toolbox-icon" aria-hidden="true">
+                      {tool.icon}
+                    </span>
+
+                    <span>
+                      {tool.name}
+                    </span>
+
+                  </li>
+                ))}
+              </ul>
 
             </div>
           ))}

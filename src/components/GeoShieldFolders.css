@@ -1,0 +1,843 @@
+/* GeoShield — cinco fichas sobrepostas, cada uma com um layout próprio. */
+
+.gs-folders-section {
+  padding: 36px 0 60px;
+  background: var(--cream);
+  scroll-margin-top: 90px;
+}
+
+.gs-folders-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: 35px;
+  align-items: end;
+  margin-bottom: 47px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.gs-folders-kicker {
+  display: block;
+  margin-bottom: 19px;
+  color: #77726b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.gs-folders-intro h2 {
+  margin: 0;
+  font: 400 clamp(47px, 5.9vw, 84px)/1 var(--font-serif);
+  letter-spacing: -.025em;
+  color: var(--ink);
+}
+
+.gs-folders-intro p {
+  max-width: 390px;
+  margin: 0;
+  color: #625f59;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.gs-folders-mobile-hint { display: none; }
+
+/* =========================================
+   ETIQUETAS E FOLHAS
+========================================= */
+
+.gs-folder-collection {
+  position: relative;
+  isolation: isolate;
+  scroll-margin-top: 24px;
+}
+
+.gs-folder-tabs {
+  position: relative;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  gap: 5px;
+  padding: 0 14px;
+}
+
+.gs-folder-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  min-width: 0;
+  min-height: 57px;
+  padding: 12px 16px;
+  border: 1px solid rgba(37, 53, 41, .18);
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+  color: #2a2a26;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transform: translateY(7px);
+  transition: transform .25s var(--ease-out);
+}
+
+.gs-folder-tab:hover { transform: translateY(3px); }
+
+.gs-folder-tab--active,
+.gs-folder-tab--active:hover { transform: translateY(0); }
+
+.gs-folder-tab--active { min-height: 66px; z-index: 1; }
+
+.gs-folder-tab--active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: inherit;
+}
+
+.gs-folder-tab-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gs-folder-tab-index { font-size: 10px; opacity: .55; flex-shrink: 0; }
+
+.gs-folder-stack {
+  display: grid;
+  position: relative;
+  isolation: isolate;
+  margin-bottom: 30px; /* espaço para enxergar as bordas das fichas de trás */
+}
+
+.gs-folder-sheet {
+  grid-area: 1 / 1;
+  min-width: 0;
+  min-height: 520px;
+  border: 1px solid rgba(37, 53, 41, .18);
+  border-radius: 17px 17px 23px 23px;
+  box-shadow: 0 6px 14px rgba(20, 37, 26, .05);
+  pointer-events: none;
+}
+
+.gs-folder-sheet--active { pointer-events: auto; }
+
+.gs-folder-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: 100%;
+  min-height: 520px;
+  padding: 27px 34px 20px;
+}
+
+.gs-folder-panel-top,
+.gs-folder-panel-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #56574f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Conteúdo entra suavemente ao trocar de ficha */
+.gs-folder-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  animation: gs-fade-in .5s var(--ease-out) both;
+}
+
+@keyframes gs-fade-in {
+  from { opacity: 0; translate: 0 10px; }
+}
+
+.gs-folder-panel-bottom {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(37, 53, 41, .14);
+}
+
+.gs-folder-count { letter-spacing: 1.5px; }
+
+.gs-folder-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid rgba(37, 53, 41, .22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .45);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  cursor: pointer;
+  transition: background .2s ease, translate .25s var(--ease-out), opacity .2s ease;
+}
+
+.gs-folder-nav:hover:not(:disabled) { background: #ffffff; }
+.gs-folder-nav:hover:not(:disabled) svg { translate: -2px 0; }
+.gs-folder-nav--next:hover:not(:disabled) svg { translate: 2px 0; }
+.gs-folder-nav svg { transition: translate .25s var(--ease-out); }
+.gs-folder-nav:disabled { opacity: .3; cursor: default; }
+
+/* =========================================
+   PEÇAS COMUNS
+========================================= */
+
+.gs-layout {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  gap: 44px;
+}
+
+.gs-copy { min-width: 0; }
+
+.gs-copy h3,
+.gs-learned-intro h3 {
+  max-width: 460px;
+  margin: 0 0 16px;
+  font: 400 clamp(36px, 3.5vw, 52px)/1.02 var(--font-serif);
+  letter-spacing: -.01em;
+  color: #181a17;
+}
+
+.gs-copy > p {
+  max-width: 480px;
+  margin: 0;
+  color: #53554e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.gs-mini-title {
+  display: block;
+  margin: 24px 0 10px;
+  color: #6b6a62;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* Captura de tela */
+.gs-shot {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid rgba(37, 53, 41, .09);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .85);
+}
+
+.gs-shot-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 10px;
+  color: #56574f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.gs-shot-frame { position: relative; }
+
+.gs-shot-link {
+  display: block;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.gs-shot-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: scale .6s var(--ease-out);
+}
+
+.gs-shot-link:hover img { scale: 1.02; }
+
+/* =========================================
+   FICHA 01 — FICHA TÉCNICA
+========================================= */
+
+.gs-layout--project { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); }
+
+.gs-spec {
+  position: relative;
+  margin: 24px 0 0;
+  padding: 18px 20px 6px;
+  border: 1px solid rgba(37, 53, 41, .16);
+  border-radius: 10px;
+  background: #fbfaf6;
+  box-shadow: 0 8px 20px rgba(20, 37, 26, .05);
+}
+
+/* Margem vermelha de ficha de biblioteca */
+.gs-spec::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 112px;
+  width: 1px;
+  background: rgba(214, 120, 110, .35);
+}
+
+.gs-spec-title {
+  display: block;
+  margin-bottom: 10px;
+  color: #6b6a62;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.gs-spec-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 20px;
+  padding: 9px 0;
+  border-top: 1px dashed rgba(37, 53, 41, .14);
+}
+
+.gs-spec-row dt {
+  color: #3f453e;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+.gs-spec-row dd {
+  margin: 0;
+  color: #3d3f39;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.gs-clipped {
+  position: relative;
+  rotate: 1.2deg;
+}
+
+/* Clipe de papel desenhado em CSS */
+.gs-clip {
+  position: absolute;
+  z-index: 2;
+  top: -16px;
+  right: 64px;
+  width: 16px;
+  height: 46px;
+  border: 2.5px solid #8f948c;
+  border-radius: 10px;
+  rotate: -8deg;
+}
+
+.gs-clip::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  width: 6px;
+  height: 26px;
+  border: 2px solid #8f948c;
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+/* =========================================
+   FICHA 02 — MURAL
+========================================= */
+
+.gs-layout--creative { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+
+.gs-decisions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.gs-decisions li {
+  position: relative;
+  padding-left: 20px;
+  color: #3d3f39;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.gs-decisions li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 11px;
+  color: #b0866f;
+}
+
+/* Amostras de tinta */
+.gs-chips {
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gs-chips li {
+  width: 84px;
+  padding: 5px 5px 8px;
+  border: 1px solid rgba(37, 53, 41, .12);
+  border-radius: 6px;
+  background: #fffdf9;
+  box-shadow: 0 3px 8px rgba(20, 37, 26, .05);
+}
+
+.gs-chip-color {
+  display: block;
+  height: 40px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, .06);
+}
+
+.gs-chip-name,
+.gs-chip-hex {
+  display: block;
+  padding: 0 3px;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.gs-chip-name { font-weight: 600; color: #2d2e2a; }
+.gs-chip-hex { color: #7a7a72; font-family: ui-monospace, monospace; font-size: 9px; }
+
+/* Papel quadriculado com as polaroids */
+.gs-mural {
+  position: relative;
+  min-height: 460px;
+  border-radius: 12px;
+  background-color: #fcf8f3;
+  background-image:
+    linear-gradient(rgba(176, 134, 111, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 134, 111, .12) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border: 1px solid rgba(37, 53, 41, .08);
+}
+
+.gs-polaroid {
+  position: absolute;
+  width: 41%;
+  padding: 8px 8px 0;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(20, 37, 26, .12);
+  transition: rotate .4s var(--ease-out), scale .4s var(--ease-out), z-index 0s;
+}
+
+.gs-polaroid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.gs-polaroid-caption {
+  display: block;
+  padding: 7px 4px 9px;
+  font-family: var(--font-hand);
+  font-size: 19px;
+  line-height: 1;
+  color: #36342f;
+}
+
+/* Fita adesiva */
+.gs-polaroid::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -10px;
+  left: 50%;
+  width: 64px;
+  height: 20px;
+  translate: -50% 0;
+  rotate: -3deg;
+  background: rgba(244, 231, 184, .82);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .06);
+}
+
+.gs-polaroid--1 { top: 22px; left: 5%; rotate: -4deg; z-index: 1; }
+.gs-polaroid--2 { top: 38px; right: 6%; rotate: 3deg; z-index: 2; }
+.gs-polaroid--3 { bottom: 26px; left: 16%; rotate: -1.5deg; z-index: 3; }
+
+.gs-polaroid--2::before { background: rgba(221, 212, 242, .85); rotate: 4deg; }
+.gs-polaroid--3::before { background: rgba(244, 203, 187, .8); }
+
+.gs-polaroid:hover {
+  z-index: 5;
+  rotate: 0deg;
+  scale: 1.04;
+}
+
+.gs-mural-note {
+  position: absolute;
+  right: 7%;
+  bottom: 22px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  font-family: var(--font-hand);
+  font-size: 23px;
+  color: #36342f;
+  rotate: -5deg;
+}
+
+.gs-mural-arrow {
+  width: 44px;
+  height: 30px;
+  rotate: 180deg;
+  fill: none;
+  stroke: #36342f;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =========================================
+   FICHA 03 — CÓDIGO E DESAFIOS
+========================================= */
+
+.gs-layout--development { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+
+.gs-challenges {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.gs-challenges li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(37, 53, 41, .12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .6);
+}
+
+.gs-challenge-number {
+  font: 400 26px/1 var(--font-serif);
+  color: #5e6f95;
+}
+
+.gs-challenge-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #6b6a62;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.gs-challenges p {
+  margin: 0;
+  color: #3d3f39;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.gs-challenges .gs-challenge-problem {
+  margin-bottom: 9px;
+  color: #1f201d;
+  font-weight: 600;
+}
+
+/* Janela de editor */
+.gs-code {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #151b23;
+  box-shadow: 0 18px 40px rgba(21, 27, 35, .18);
+}
+
+.gs-code-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #2a323d;
+  color: #9aa4b2;
+  font-size: 11px;
+}
+
+.gs-code-dots { display: flex; gap: 6px; }
+
+.gs-code-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--peach);
+}
+
+.gs-code-dots span:nth-child(2) { background: var(--butter); }
+.gs-code-dots span:nth-child(3) { background: #c9d3c0; }
+
+.gs-code-file { font-family: ui-monospace, monospace; color: #d6dde6; }
+
+.gs-code-note {
+  margin-left: auto;
+  font-family: var(--font-hand);
+  font-size: 16px;
+  color: #b8a9e3;
+}
+
+.gs-code pre {
+  margin: 0;
+  padding: 16px 0 18px;
+  overflow-x: auto;
+  counter-reset: line;
+}
+
+.gs-code code {
+  display: block;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #dfe5ec;
+}
+
+.gs-code-line { display: block; padding-right: 20px; white-space: pre; }
+
+.gs-code-line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 44px;
+  padding-right: 16px;
+  text-align: right;
+  color: #4f5968;
+}
+
+.tok-comment { color: #8b96a5; font-style: italic; }
+.tok-string { color: #c9e5b9; }
+.tok-keyword { color: #c9b8f5; }
+.tok-number { color: var(--peach); }
+
+/* =========================================
+   FICHA 04 — MAPA COM PONTOS NUMERADOS
+========================================= */
+
+.gs-layout--mapbox { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); }
+
+.gs-hotspot {
+  position: absolute;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  translate: -50% -50%;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--lilac);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 var(--ink);
+  pointer-events: none;
+}
+
+.gs-shot-frame .gs-hotspot::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(17, 17, 17, .35);
+  animation: gs-pulse 2.2s ease-out infinite;
+}
+
+@keyframes gs-pulse {
+  from { opacity: 1; scale: .8; }
+  to { opacity: 0; scale: 1.5; }
+}
+
+.gs-hotspot--static {
+  position: static;
+  flex-shrink: 0;
+  translate: none;
+}
+
+.gs-hotspot-list {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.gs-hotspot-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.gs-hotspot-list strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #1f201d;
+  font-size: 13px;
+}
+
+.gs-hotspot-list p {
+  margin: 0;
+  color: #53554e;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   FICHA 05 — O QUE APRENDI
+========================================= */
+
+.gs-layout--learned {
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+}
+
+.gs-learned-intro .gs-mini-title { margin-top: 0; }
+
+.gs-signature {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 30px;
+  rotate: -4deg;
+}
+
+.gs-learned-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gs-learned-list li {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(37, 53, 41, .16);
+}
+
+.gs-learned-list li:first-child { padding-top: 4px; border-top: 0; }
+
+.gs-learned-number {
+  font: 400 44px/1 var(--font-serif);
+  color: #b3955a;
+}
+
+.gs-learned-list h4 {
+  margin: 0 0 6px;
+  font: 400 25px/1.1 var(--font-serif);
+  color: #1b1c19;
+}
+
+.gs-learned-list p {
+  margin: 0;
+  max-width: 520px;
+  color: #53554e;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1100px) {
+  .gs-folder-tab { font-size: 12px; padding: 12px 10px; }
+  .gs-folder-tab-index { display: none; }
+  .gs-folder-panel { padding: 24px; }
+
+  .gs-layout,
+  .gs-layout--project,
+  .gs-layout--creative,
+  .gs-layout--development,
+  .gs-layout--mapbox,
+  .gs-layout--learned {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .gs-layout--mapbox .gs-copy { order: -1; }
+  .gs-copy h3 { max-width: none; }
+}
+
+@media (max-width: 720px) {
+  .gs-folders-section { padding: 30px 0 44px; }
+  .gs-folders-intro { grid-template-columns: 1fr; gap: 13px; margin-bottom: 22px; }
+  .gs-folders-intro h2 { font-size: clamp(46px, 11vw, 68px); }
+  .gs-folders-intro p { font-size: 14px; }
+  .gs-folders-mobile-hint { display: block; margin: 0 0 12px; font-size: 11px; color: #77726b; }
+
+  .gs-folder-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 0 5px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .gs-folder-tab { flex: 0 0 138px; font-size: 11px; min-height: 51px; border-radius: 11px 11px 0 0; }
+  .gs-folder-tab--active { min-height: 59px; }
+  .gs-folder-sheet, .gs-folder-panel { min-height: 0; }
+  .gs-folder-sheet { border-radius: 12px 12px 18px 18px; }
+  .gs-folder-panel { gap: 22px; padding: 20px 16px 16px; }
+  .gs-folder-panel-top { font-size: 9px; letter-spacing: .4px; }
+
+  .gs-folder-nav span { display: none; }
+  .gs-folder-nav { padding: 10px 12px; }
+
+  .gs-copy h3,
+  .gs-learned-intro h3 { font-size: clamp(34px, 9vw, 44px); }
+
+  .gs-spec { padding: 16px 14px 4px; }
+  .gs-spec::before { display: none; }
+  .gs-spec-row { grid-template-columns: 1fr; gap: 2px; }
+
+  .gs-polaroid { width: 52%; }
+  .gs-polaroid--3 { left: 8%; bottom: 52px; }
+  .gs-mural { min-height: 400px; }
+  .gs-chips li { width: calc(25% - 6px); }
+  .gs-polaroid-caption { font-size: 16px; }
+  .gs-mural-note { font-size: 19px; right: 4%; bottom: 12px; }
+
+  .gs-code code { font-size: 11px; }
+  .gs-code-line::before { width: 32px; padding-right: 10px; }
+  .gs-code-note { display: none; }
+
+  .gs-hotspot { width: 20px; height: 20px; font-size: 10px; }
+
+  .gs-learned-list li { grid-template-columns: 46px 1fr; gap: 10px; }
+  .gs-learned-number { font-size: 34px; }
+  .gs-learned-list h4 { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-folder-body { animation: none; }
+  .gs-shot-frame .gs-hotspot::after { animation: none; }
+}

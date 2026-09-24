@@ -1,6 +1,8 @@
+import type { CSSProperties } from "react";
 import {
   ArrowRight,
   BookOpen,
+  Download,
   GraduationCap,
   Rocket,
   MapPin,
@@ -9,8 +11,13 @@ import {
 } from "lucide-react";
 
 import { FaGithub } from "react-icons/fa";
-import maria from "../assets/maria.png";
+import maria from "../assets/maria.webp";
 import { useLanguage } from "../context/LanguageContext";
+import { profile } from "../data/profile";
+
+// Atraso da animação de entrada de cada elemento (em ms).
+const enter = (delay: number) =>
+  ({ "--enter-delay": `${delay}ms` }) as CSSProperties;
 
 export function Hero() {
   const { t } = useLanguage();
@@ -25,7 +32,7 @@ export function Hero() {
           {/* ESQUERDA */}
           <div className="hero-content">
 
-            <div className="hero-eyebrow">
+            <div className="hero-eyebrow enter" style={enter(0)}>
               {t.hero.hello}
             </div>
 
@@ -34,15 +41,15 @@ export function Hero() {
               {/* COLUNA MARIA / DUTIL */}
               <div className="hero-name-left">
 
-                <span className="hero-name-maria">
+                <span className="hero-name-maria enter" style={enter(80)}>
                   Maria
                 </span>
 
-                <span className="hero-name-dutil">
+                <span className="hero-name-dutil enter" style={enter(200)}>
                   Dutil
                 </span>
 
-                <span className="handwritten hero-note-left">
+                <span className="handwritten hero-note-left enter" style={enter(700)}>
                   Nice
                   <br />
                   to meet
@@ -55,21 +62,21 @@ export function Hero() {
               {/* COLUNA JÚLIA / TEXTO */}
               <div className="hero-name-right">
 
-                <span className="hero-name-julia">
+                <span className="hero-name-julia enter" style={enter(140)}>
                   Júlia
                 </span>
 
-                <div className="hero-role">
+                <div className="hero-role enter" style={enter(320)}>
                   {t.hero.role.firstLine}
                   <br />
                   {t.hero.role.secondLine}
                 </div>
 
-                <p className="hero-intro">
+                <p className="hero-intro enter" style={enter(400)}>
                   {t.hero.description}
                 </p>
 
-                <div className="hero-buttons">
+                <div className="hero-buttons enter" style={enter(480)}>
 
                   <a href="#projetos" className="button-primary">
                     {t.hero.projectsButton}
@@ -77,7 +84,7 @@ export function Hero() {
                   </a>
 
                   <a
-                    href="https://github.com/MjDutil"
+                    href={profile.github}
                     target="_blank"
                     rel="noreferrer"
                     className="button-secondary"
@@ -86,37 +93,47 @@ export function Hero() {
                     GitHub
                   </a>
 
+                  {profile.resume && (
+                    <a
+                      href={profile.resume}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="button-secondary"
+                    >
+                      <Download size={16} />
+                      {t.hero.resumeButton}
+                    </a>
+                  )}
+
                 </div>
               </div>
             </div>
           </div>
 
           {/* FOTO */}
-          <div className="hero-photo-wrapper">
+          <div className="hero-photo-wrapper enter enter--scale" style={enter(150)}>
 
             <div className="hero-photo">
               <img
                 src={maria}
-                alt="Maria Julia Dutil"
+                alt="Maria Júlia Dutil"
+                width={900}
+                height={1125}
+                fetchPriority="high"
               />
             </div>
 
-            <span className="handwritten hero-note-photo">
-              Same
-              <br />
-              big ideas,
-              <br />
-              smaller
-              <br />
-              screens ♡
+            {/* STICKER */}
+            <span className="hero-sticker">
+              {t.hero.sticker}
             </span>
 
           </div>
 
           {/* CARDS */}
-          <div className="hero-cards">
+          <div className="hero-cards" id="sobre">
 
-            <article className="info-card info-card-green">
+            <article className="info-card info-card-green enter enter--side" style={enter(450)}>
 
               <GraduationCap size={25} />
 
@@ -136,7 +153,7 @@ export function Hero() {
 
             </article>
 
-            <article className="info-card info-card-peach">
+            <article className="info-card info-card-peach enter enter--side" style={enter(560)}>
 
               <Rocket size={24} />
 
@@ -156,7 +173,7 @@ export function Hero() {
 
             </article>
 
-            <article className="info-card info-card-gray">
+            <article className="info-card info-card-lilac enter enter--side" style={enter(670)}>
 
               <BookOpen size={24} />
 
@@ -176,22 +193,12 @@ export function Hero() {
 
             </article>
 
-            <span className="handwritten hero-note-right">
-              Good
-              <br />
-              interfaces,
-              <br />
-              happier people.
-              <br />
-              ♡
-            </span>
-
           </div>
 
         </div>
 
         {/* INFORMAÇÕES ABAIXO */}
-        <div className="hero-meta">
+        <div className="hero-meta enter" style={enter(800)}>
 
           <div className="hero-meta-item">
             <div className="hero-meta-icon">

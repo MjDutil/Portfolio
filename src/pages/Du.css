@@ -1,0 +1,1149 @@
+/* =====================================================================
+   DU — PÁGINA DO ESTUDO DE CASO
+   Mesma lógica do GeoShield (projeto → processo → código → aprendizado),
+   mas contada como uma rota com paradas. Cor do projeto: lilás.
+===================================================================== */
+
+.du-page {
+  min-height: 100vh;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: clip;
+}
+
+.du-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.du-kicker,
+.du-mini-title {
+  display: block;
+  color: #6f6982;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.du-mini-title { margin-bottom: 14px; }
+
+/* =========================================
+   APRESENTAÇÃO
+========================================= */
+
+.du-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 40px 0 30px;
+}
+
+/* Círculo lilás no canto, como o sálvia do GeoShield */
+.du-hero-circle {
+  position: absolute;
+  z-index: -1;
+  top: -230px;
+  left: -230px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: #e6dff7;
+  box-shadow:
+    0 0 0 70px #eee9fa,
+    0 0 0 140px rgba(238, 233, 250, 0.55);
+  pointer-events: none;
+}
+
+/* Rota tracejada atrás da linha de informações */
+.du-hero-route {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 18px;
+  width: 100%;
+  height: 150px;
+  fill: none;
+  stroke: var(--lilac-deep);
+  stroke-width: 2.5;
+  stroke-dasharray: 10 12;
+  stroke-linecap: round;
+  pointer-events: none;
+  animation: du-route-dash 30s linear infinite;
+}
+
+@keyframes du-route-dash {
+  to { stroke-dashoffset: -440; }
+}
+
+/* Pino no ponto mais alto da rota (x = 1250 de 1440 no desenho) */
+.du-hero-pin {
+  position: absolute;
+  z-index: -1;
+  left: 86.8%;
+  bottom: 99px;
+  display: flex;
+  translate: -50% 0;
+  color: #7d6bc4;
+  pointer-events: none;
+}
+
+.du-title-spark {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: top;
+  color: #b7a8e6;
+  font-size: .32em;
+  line-height: 1;
+  translate: 0 .35em;
+}
+
+.du-hero-spark {
+  position: absolute;
+  z-index: 4;
+  top: 20px;
+  left: 14%;
+  color: #231d38;
+  font-size: 40px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Notificação flutuante */
+.du-hero-toast {
+  position: absolute;
+  z-index: 5;
+  top: 80px;
+  right: 4%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  background: #fffdf9;
+  box-shadow: 3px 3px 0 var(--ink);
+  rotate: 4deg;
+  animation: du-float 4.5s ease-in-out infinite alternate;
+}
+
+.du-hero-toast-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #dcefe2;
+  color: #2f6a45;
+}
+
+.du-hero-toast strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.du-hero-toast div span {
+  display: block;
+  color: #6f6982;
+  font-size: 11px;
+}
+
+@keyframes du-float {
+  from { translate: 0 0; }
+  to { translate: 0 -10px; }
+}
+
+.du-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.du-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #77726b;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+}
+
+.du-eyebrow-number { color: #6a5aa8; }
+
+.du-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity .2s ease;
+}
+
+.du-back:hover { opacity: .6; }
+
+.du-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.du-title {
+  margin: 0;
+  font: 400 clamp(110px, 12vw, 190px)/.85 var(--font-serif);
+  letter-spacing: -.035em;
+}
+
+.du-subtitle {
+  max-width: 480px;
+  margin-top: 18px;
+  font: italic 400 clamp(26px, 2.4vw, 36px)/1.12 var(--font-serif);
+  color: #5a4c93;
+}
+
+.du-text {
+  max-width: 460px;
+  margin-top: 18px;
+  color: #625f59;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.du-author {
+  display: block;
+  margin-top: 20px;
+  color: #5a4c93;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.du-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.du-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #d6cdef;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .7);
+  color: #3c3558;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.du-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 22px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: translate .25s var(--ease-out), background .2s ease;
+}
+
+.du-github:hover { translate: 0 -2px; background: var(--ink-soft); }
+
+/* Celulares em leque */
+.du-hero-phones {
+  position: relative;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.du-hero-blob {
+  position: absolute;
+  inset: 8% 6% 4%;
+  z-index: 0;
+  border-radius: 46% 54% 42% 58% / 52% 40% 60% 48%;
+  background: linear-gradient(160deg, #eee8fb 0%, var(--lilac) 100%);
+}
+
+.du-fan {
+  position: absolute;
+  z-index: 1;
+  width: 230px;
+  transition: rotate .6s var(--ease-out), translate .6s var(--ease-out);
+}
+
+.du-fan--center { z-index: 3; width: 250px; }
+.du-fan--left { translate: -190px 34px; rotate: -9deg; }
+.du-fan--right { translate: 190px 34px; rotate: 9deg; }
+
+.du-hero-phones:hover .du-fan--left { translate: -215px 26px; rotate: -12deg; }
+.du-hero-phones:hover .du-fan--right { translate: 215px 26px; rotate: 12deg; }
+
+.du-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 20px;
+  align-items: center;
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.du-meta-item { display: flex; flex-direction: column; gap: 8px; }
+
+.du-meta-item span,
+.du-scroll {
+  color: #77726b;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+}
+
+.du-meta-item strong { color: #25231f; font-size: 13px; font-weight: 600; }
+
+.du-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: end;
+}
+
+.du-scroll:hover { opacity: .65; }
+
+/* =========================================
+   O TRAJETO
+========================================= */
+
+.du-route { padding: 70px 0 40px; }
+
+.du-route-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: 35px;
+  align-items: end;
+  margin-bottom: 60px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.du-route-intro .du-kicker { margin-bottom: 19px; }
+
+.du-route-intro h2 {
+  margin: 0;
+  font: 400 clamp(47px, 5.9vw, 84px)/1 var(--font-serif);
+  letter-spacing: -.025em;
+}
+
+.du-route-intro p {
+  max-width: 390px;
+  color: #625f59;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* A estrada: linha tracejada à esquerda de todas as paradas */
+.du-road {
+  --road-progress: 0;
+  --road-x: 28px;
+
+  position: relative;
+  padding-left: 96px;
+}
+
+.du-road-line {
+  position: absolute;
+  top: 10px;
+  bottom: 40px;
+  left: var(--road-x);
+  width: 3px;
+  translate: -50% 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    #cfc6e8 0 12px,
+    transparent 12px 22px
+  );
+}
+
+.du-road-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--road-progress) * 100%);
+  border-radius: 3px;
+  background: #7d6bc4;
+}
+
+.du-road-car {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--road-progress) * 100%);
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  translate: -50% -50%;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--lilac);
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+
+
+/* Cada parada */
+.du-stop {
+  position: relative;
+  padding: 0 0 110px;
+}
+
+.du-stop-marker {
+  position: absolute;
+  top: -4px;
+  left: calc(var(--road-x) - 96px);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  translate: -50% 0;
+  border: 1.5px solid #7d6bc4;
+  border-radius: 50%;
+  background: var(--cream);
+  color: #5a4c93;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.du-stop-label {
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--lilac);
+  color: #3c3558;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.du-stop-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 56px;
+}
+
+.du-copy { min-width: 0; }
+
+.du-copy h3,
+.du-learned-intro h3 {
+  max-width: 520px;
+  margin: 0 0 16px;
+  font: 400 clamp(38px, 3.8vw, 58px)/1.02 var(--font-serif);
+  letter-spacing: -.01em;
+}
+
+.du-copy > p {
+  max-width: 500px;
+  color: #53554e;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Parada 01 — ficha técnica */
+.du-spec {
+  margin: 26px 0 0;
+  padding: 18px 20px 6px;
+  border: 1px solid rgba(60, 53, 88, .14);
+  border-radius: 12px;
+  background: #fdfbff;
+  box-shadow: 0 8px 20px rgba(40, 30, 70, .05);
+}
+
+.du-spec-title {
+  display: block;
+  margin-bottom: 10px;
+  color: #6f6982;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.du-spec-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 20px;
+  padding: 9px 0;
+  border-top: 1px dashed rgba(60, 53, 88, .16);
+}
+
+.du-spec-row dt { color: #3c3558; font-size: 11px; font-weight: 700; letter-spacing: .4px; }
+.du-spec-row dd { margin: 0; color: #3d3f39; font-size: 13px; line-height: 1.5; }
+
+.du-phone-with-note {
+  position: relative;
+  justify-self: center;
+  rotate: 2deg;
+}
+
+.du-note {
+  position: absolute;
+  left: -120px;
+  bottom: 70px;
+  font-size: 28px;
+  rotate: -8deg;
+}
+
+/* Parada 02 — mural de identidade */
+.du-decisions {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 500px;
+}
+
+.du-decisions li {
+  position: relative;
+  padding-left: 22px;
+  color: #3d3f39;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.du-decisions li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 12px;
+  color: #7d6bc4;
+}
+
+.du-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.du-board-card {
+  padding: 20px;
+  border: 1px solid rgba(60, 53, 88, .12);
+  border-radius: 18px;
+  background: #fdfbff;
+  box-shadow: 0 10px 24px rgba(40, 30, 70, .05);
+}
+
+.du-type { rotate: -1.2deg; }
+.du-pieces { rotate: 1deg; }
+.du-palette { grid-column: 1 / -1; }
+
+.du-type-heading {
+  display: block;
+  font-family: "Plus Jakarta Sans", var(--font-sans);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: #231d38;
+}
+
+.du-type-body {
+  display: block;
+  margin-top: 18px;
+  font-size: 16px;
+  color: #3d3f39;
+}
+
+.du-type-name {
+  display: block;
+  margin-top: 6px;
+  color: #7a7590;
+  font-size: 11px;
+}
+
+.du-piece-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.du-piece-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: #3c3558;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.du-piece-button--outline {
+  border: 1.5px solid #3c3558;
+  background: transparent;
+  color: #3c3558;
+}
+
+.du-piece-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.du-piece-badge--1 { background: #dcefe2; color: #2f6a45; }
+.du-piece-badge--2 { background: #f7ecc8; color: #7a5d12; }
+.du-piece-badge--3 { background: #f7dcd5; color: #8a3b2c; }
+
+.du-piece-driver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid rgba(60, 53, 88, .12);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.du-piece-avatar {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--lilac);
+  color: #3c3558;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.du-piece-driver strong { display: block; font-size: 12px; }
+.du-piece-driver div span { display: block; color: #7a7590; font-size: 11px; }
+
+.du-piece-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  color: #b88a1b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.du-palette ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.du-palette li { width: 92px; font-size: 10px; }
+
+.du-palette li span {
+  display: block;
+  height: 42px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, .06);
+}
+
+.du-palette li strong { display: block; }
+.du-palette li code { color: #7a7590; font-size: 9px; }
+
+/* Parada 03 — fluxo navegável */
+.du-steps {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  max-width: 380px;
+}
+
+.du-steps button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: #625f59;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.du-steps button span {
+  color: #a39fb3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.du-steps button:hover { background: rgba(221, 212, 242, .45); color: var(--ink); }
+
+.du-steps button.is-active {
+  border-color: #cfc6e8;
+  background: var(--lilac);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.du-steps button.is-active span { color: #5a4c93; }
+
+.du-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  justify-self: center;
+}
+
+.du-flow-progress {
+  display: flex;
+  gap: 5px;
+  width: 240px;
+}
+
+.du-flow-progress span {
+  flex: 1;
+  height: 5px;
+  border-radius: 5px;
+  background: #e2dcef;
+  transition: background .35s var(--ease-out);
+}
+
+.du-flow-progress span.is-done { background: #7d6bc4; }
+
+.du-flow-phone { animation: du-slide-in .45s var(--ease-out); }
+
+@keyframes du-slide-in {
+  from { opacity: 0; translate: 24px 0; }
+}
+
+.du-flow-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #5a4c93;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.du-flow-controls button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: translate .15s ease, box-shadow .15s ease, opacity .2s ease;
+}
+
+.du-flow-controls button:hover:not(:disabled) { background: var(--lilac); }
+.du-flow-controls button:active:not(:disabled) { translate: 2px 2px; box-shadow: 0 0 0 var(--ink); }
+.du-flow-controls button:disabled { opacity: .3; cursor: default; }
+
+/* Parada 04 — fita de filme */
+.du-offer-copy {
+  position: relative;
+  max-width: 620px;
+}
+
+.du-offer-note {
+  position: absolute;
+  top: 6px;
+  right: -150px;
+  font-size: 27px;
+  rotate: -6deg;
+}
+
+.du-filmstrip {
+  margin: 30px calc(-48px) 0 -96px;
+  padding: 22px 48px 26px 96px;
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 96px;
+  scrollbar-width: thin;
+  scrollbar-color: #cfc6e8 transparent;
+}
+
+.du-filmstrip:focus-visible { outline-offset: -4px; }
+
+.du-filmstrip li {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  scroll-snap-align: start;
+}
+
+.du-filmstrip .phone { width: 210px; }
+
+/* Leve "onda" nas alturas, como fotos em sequência */
+.du-filmstrip li:nth-child(even) { translate: 0 18px; }
+
+.du-film-caption {
+  max-width: 200px;
+  color: #3d3f39;
+  font-size: 13px;
+  text-align: center;
+}
+
+.du-film-caption b {
+  margin-right: 4px;
+  color: #7d6bc4;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* Parada 05 — desenvolvimento */
+.du-stop-grid--dev { align-items: start; }
+
+.du-challenges {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.du-challenges li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(60, 53, 88, .12);
+  border-radius: 14px;
+  background: #fdfbff;
+}
+
+.du-challenge-number { font: 400 26px/1 var(--font-serif); color: #7d6bc4; }
+
+.du-challenge-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #6f6982;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.du-challenges p { margin: 0; color: #3d3f39; font-size: 13px; line-height: 1.5; }
+.du-challenges .du-challenge-problem { margin-bottom: 9px; color: #1f201d; font-weight: 600; }
+
+.du-dev-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  min-width: 0;
+}
+
+.du-dev-phones {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.du-dev-phones .phone { width: 220px; }
+.du-dev-phones .phone:first-child { rotate: -3deg; }
+.du-dev-phones .phone:last-child { rotate: 3deg; translate: 0 30px; }
+
+.du-code {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #1b1827;
+  box-shadow: 0 18px 40px rgba(27, 24, 39, .18);
+}
+
+.du-code figcaption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #2f2a40;
+  color: #a79fc0;
+  font-size: 11px;
+}
+
+.du-code-dots { display: flex; gap: 6px; }
+.du-code-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--peach); }
+.du-code-dots span:nth-child(2) { background: var(--butter); }
+.du-code-dots span:nth-child(3) { background: #c9d3c0; }
+.du-code-file { font-family: ui-monospace, monospace; color: #e2dcf2; }
+.du-code-note { margin-left: auto; font-family: var(--font-hand); font-size: 16px; color: #b8a9e3; }
+
+.du-code pre { margin: 0; padding: 16px 0 18px; overflow-x: auto; counter-reset: line; }
+
+.du-code code {
+  display: block;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #e6e2f0;
+}
+
+.du-code-line { display: block; padding-right: 20px; white-space: pre; }
+
+.du-code-line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 44px;
+  padding-right: 16px;
+  text-align: right;
+  color: #585070;
+}
+
+.du-code .tok-comment { color: #8f88a6; font-style: italic; }
+.du-code .tok-string { color: #c9e5b9; }
+.du-code .tok-keyword { color: #c9b8f5; }
+.du-code .tok-number { color: var(--peach); }
+
+/* Parada 06 — chegada */
+.du-stop--arrival { padding-bottom: 40px; }
+
+.du-stop--arrival .du-stop-marker {
+  width: 38px;
+  height: 38px;
+  top: -8px;
+  border-color: var(--ink);
+  background: var(--butter);
+  color: var(--ink);
+}
+
+.du-stop-grid--learned {
+  align-items: start;
+  padding: 36px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fbf5e0 0%, var(--butter) 100%);
+  border: 1px solid rgba(122, 93, 18, .14);
+}
+
+.du-learned-intro .du-kicker { margin-bottom: 12px; }
+
+.du-signature {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 30px;
+  rotate: -4deg;
+}
+
+.du-learned-list { margin: 0; padding: 0; list-style: none; }
+
+.du-learned-list li {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(122, 93, 18, .16);
+}
+
+.du-learned-list li:first-child { padding-top: 4px; border-top: 0; }
+
+.du-learned-number { font: 400 44px/1 var(--font-serif); color: #b3955a; }
+
+.du-learned-list h4 { margin: 0 0 6px; font: 400 25px/1.1 var(--font-serif); color: #1b1c19; }
+
+.du-learned-list p { margin: 0; max-width: 520px; color: #53554e; font-size: 13.5px; line-height: 1.65; }
+
+/* =========================================
+   PROJETO ANTERIOR
+========================================= */
+
+.du-next { padding: 30px 0 80px; }
+
+.du-next-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 30px;
+  padding: 34px 38px;
+  border: 1px solid rgba(17, 17, 17, .12);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #eef3ea 0%, var(--sage-soft) 100%);
+}
+
+.du-next-card > div { position: relative; z-index: 1; max-width: 560px; }
+.du-next-card .du-kicker { margin-bottom: 12px; color: #55634f; }
+
+.du-next-card h2 { margin: 0 0 10px; font: 400 clamp(34px, 3.6vw, 50px)/1 var(--font-serif); }
+
+.du-next-card p { color: #4d5249; font-size: 14px; line-height: 1.6; }
+
+.du-next-button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: translate .25s var(--ease-out), background .2s ease;
+}
+
+.du-next-button:hover { translate: 0 -2px; background: var(--ink-soft); }
+
+.du-next-mark {
+  position: absolute;
+  right: 24%;
+  bottom: -38px;
+  font: italic 400 190px/1 var(--font-serif);
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(17, 17, 17, .14);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1100px) {
+  .du-hero-grid,
+  .du-stop-grid,
+  .du-route-intro { grid-template-columns: 1fr; }
+
+  .du-hero-phones { height: 560px; }
+  .du-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .du-scroll { justify-self: start; }
+
+  .du-stop-grid { gap: 40px; }
+  .du-offer-note { position: static; display: inline-block; margin-top: 12px; }
+  .du-note { left: auto; right: -110px; }
+}
+
+@media (max-width: 768px) {
+  .du-container { padding: 0 20px; }
+
+  .du-hero { padding: 26px 0 20px; }
+  .du-hero-top { flex-direction: column-reverse; align-items: flex-start; gap: 18px; }
+  .du-title { font-size: clamp(96px, 30vw, 130px); }
+  .du-text { font-size: 14px; }
+
+  .du-hero-phones { height: 400px; }
+  .du-fan { width: 138px; }
+  .du-fan--center { width: 160px; }
+  .du-fan--left { translate: -92px 24px; }
+  .du-fan--right { translate: 92px 24px; }
+  .du-hero-phones:hover .du-fan--left { translate: -92px 24px; rotate: -9deg; }
+  .du-hero-phones:hover .du-fan--right { translate: 92px 24px; rotate: 9deg; }
+
+  .du-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .du-meta-item strong { font-size: 12px; }
+
+  .du-hero-circle { top: -170px; left: auto; right: -200px; width: 300px; height: 300px; }
+  .du-hero-route { height: 110px; bottom: 40px; }
+  .du-hero-spark { top: 6px; left: 4%; font-size: 28px; }
+  .du-hero-toast { top: 4px; right: 0; padding: 8px 12px 8px 8px; }
+  .du-hero-toast strong { font-size: 11px; }
+  .du-hero-toast div span { font-size: 10px; }
+
+  .du-route { padding: 44px 0 20px; }
+  .du-route-intro { margin-bottom: 40px; }
+
+  .du-road { --road-x: 12px; padding-left: 38px; }
+  .du-road-car { width: 30px; height: 30px; box-shadow: 1.5px 1.5px 0 var(--ink); }
+  .du-road-car svg { width: 14px; height: 14px; }
+  .du-stop-marker { left: calc(var(--road-x) - 38px); width: 24px; height: 24px; font-size: 9px; }
+  .du-stop { padding-bottom: 80px; }
+
+  .du-copy h3,
+  .du-learned-intro h3 { font-size: clamp(34px, 9vw, 44px); }
+  .du-copy > p { font-size: 14px; }
+
+  .du-spec { padding: 16px 14px 4px; }
+  .du-spec-row { grid-template-columns: 1fr; gap: 2px; }
+
+  .du-phone-with-note .phone { width: 210px; }
+  .du-note { right: -8px; bottom: -30px; font-size: 22px; }
+
+  .du-board { grid-template-columns: 1fr; }
+  .du-type, .du-pieces { rotate: none; }
+
+  .du-flow-progress { width: 210px; }
+  .du-flow-phone { width: 210px; }
+
+  .du-filmstrip {
+    margin: 22px -20px 0 -38px;
+    padding: 18px 20px 24px 38px;
+    scroll-padding-left: 38px;
+    gap: 16px;
+  }
+
+  .du-filmstrip .phone { width: 180px; }
+
+  .du-dev-phones { gap: 10px; }
+  .du-dev-phones .phone { width: 150px; }
+  .du-code code { font-size: 11px; }
+  .du-code-note { display: none; }
+
+  .du-stop-grid--learned { padding: 24px 18px; }
+  .du-learned-list li { grid-template-columns: 46px 1fr; gap: 10px; }
+  .du-learned-number { font-size: 34px; }
+  .du-learned-list h4 { font-size: 22px; }
+
+  .du-next { padding: 10px 0 50px; }
+  .du-next-card { grid-template-columns: 1fr; padding: 28px 22px; }
+  .du-next-mark { right: -10px; bottom: -30px; font-size: 140px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .du-hero-route,
+  .du-hero-toast { animation: none; }
+  .du-flow-phone { animation: none; }
+  .du-fan { transition: none; }
+}
