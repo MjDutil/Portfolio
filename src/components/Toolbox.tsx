@@ -48,17 +48,11 @@ export function Toolbox() {
   return (
     <section className="toolbox" id="tecnologias">
       <div className="toolbox-container">
-
         <div className="toolbox-heading" data-reveal>
-
-          <h2>
-            {t.toolbox.title}
-          </h2>
+          <h2>{t.toolbox.title}</h2>
 
           <div className="toolbox-heading-detail">
-            <span>
-              {t.toolbox.subtitle}
-            </span>
+            <span>{t.toolbox.subtitle}</span>
 
             <div className="toolbox-line" />
           </div>
@@ -70,7 +64,6 @@ export function Toolbox() {
             <br />
             into reality. ♡
           </span>
-
         </div>
 
         <div className="toolbox-groups">
@@ -81,7 +74,6 @@ export function Toolbox() {
               data-reveal
               style={{ "--reveal-delay": `${index * 120}ms` } as CSSProperties}
             >
-
               <span className="toolbox-group-label">
                 <span className="toolbox-group-number">0{index + 1}</span>
                 {group.label}
@@ -90,23 +82,17 @@ export function Toolbox() {
               <ul className="toolbox-list">
                 {group.tools.map((tool) => (
                   <li className="toolbox-item" key={tool.name}>
-
                     <span className="toolbox-icon" aria-hidden="true">
                       {tool.icon}
                     </span>
 
-                    <span>
-                      {tool.name}
-                    </span>
-
+                    <span>{tool.name}</span>
                   </li>
                 ))}
               </ul>
-
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

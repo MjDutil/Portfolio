@@ -14,9 +14,9 @@ const folder = "/projects/du";
 
 export const duScreens = {
   // Celulares do topo da página
-  home: `${folder}/home.png`,           // Buscar motoristas
-  chat: `${folder}/chat.png`,           // Lista de conversas
-  tracking: `${folder}/tracking.png`,   // Rastreamento da corrida
+  home: `${folder}/home.png`, // Buscar motoristas
+  chat: `${folder}/chat.png`, // Lista de conversas
+  tracking: `${folder}/tracking.png`, // Rastreamento da corrida
 
   // Parada 01 — ponto de partida
   invite: `${folder}/signup-1-invite.png`,
@@ -43,7 +43,7 @@ export const duScreens = {
   ],
 
   // Parada 05 — desenvolvimento
-  finish: `${folder}/finish.png`,       // Finalização + avaliação
+  finish: `${folder}/finish.png`, // Finalização + avaliação
 };
 
 // Cores do app (copie de src/theme/tokens.ts do DU).

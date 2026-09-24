@@ -6,12 +6,9 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-
         {/* IDENTIDADE */}
         <div className="footer-brand">
-          <span className="footer-name">
-            Maria Júlia
-          </span>
+          <span className="footer-name">Maria Júlia</span>
 
           <div className="footer-brand-meta">
             <span>{t.footer.frontendDeveloper}</span>
@@ -31,10 +28,7 @@ export function Footer() {
           <a href="#contato">{t.footer.contact}</a>
         </nav>
 
-        <span className="footer-year">
-          © 2026
-        </span>
-
+        <span className="footer-year">© 2026</span>
       </div>
     </footer>
   );

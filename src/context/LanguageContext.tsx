@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 import { translations } from "../data/translations";
 
@@ -17,15 +11,9 @@ type LanguageContextType = {
   t: Translation;
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
-);
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(() => {
     const savedLanguage = localStorage.getItem("language");
 
@@ -39,8 +27,7 @@ export function LanguageProvider({
   useEffect(() => {
     localStorage.setItem("language", language);
 
-    document.documentElement.lang =
-      language === "pt" ? "pt-BR" : "en";
+    document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
   }, [language]);
 
   const t = translations[language];
@@ -63,9 +50,7 @@ export function useLanguage() {
   const context = useContext(LanguageContext);
 
   if (!context) {
-    throw new Error(
-      "useLanguage deve ser utilizado dentro de LanguageProvider"
-    );
+    throw new Error("useLanguage deve ser utilizado dentro de LanguageProvider");
   }
 
   return context;

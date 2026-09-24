@@ -11,7 +11,6 @@ export function Projects() {
   return (
     <section className="projects" id="projetos">
       <div className="projects-container">
-
         {/* CABEÇALHO */}
         <div className="projects-heading" data-reveal>
           <h2>{t.projects.heading}</h2>
@@ -24,15 +23,10 @@ export function Projects() {
 
         {/* PROJETOS */}
         <div className="projects-grid">
-
           {/* ==============================
               PROJETO 01 — GEOSHIELD
           =============================== */}
-          <article
-            className="project-card project-card--geoshield"
-            data-reveal
-          >
-
+          <article className="project-card project-card--geoshield" data-reveal>
             <Link
               to="/projetos/geoshield"
               className="project-card-link"
@@ -40,13 +34,9 @@ export function Projects() {
             />
 
             <div className="project-cover project-cover-mist">
-
-              <span className="project-cover-brand">
-                GEOSHIELD
-              </span>
+              <span className="project-cover-brand">GEOSHIELD</span>
 
               <div className="project-cover-window">
-
                 <div className="project-window-top">
                   <span>&lt;/&gt;</span>
 
@@ -64,20 +54,13 @@ export function Projects() {
                 </h3>
 
                 <div className="project-window-bottom">
-                  <span>
-                    {t.projects.GeoShield.coverCategory}
-                  </span>
+                  <span>{t.projects.GeoShield.coverCategory}</span>
                 </div>
-
               </div>
 
               {/* Captura do mapa com os marcadores do app */}
               <div className="project-cover-map" aria-hidden="true">
-                <img
-                  src="/projects/geoshield/map-desktop.webp"
-                  alt=""
-                  loading="lazy"
-                />
+                <img src="/projects/geoshield/map-desktop.webp" alt="" loading="lazy" />
 
                 <span className="map-pin map-pin--green">
                   <ShieldPlus size={14} strokeWidth={2.2} />
@@ -91,7 +74,6 @@ export function Projects() {
                 <span className="map-pin map-pin--blue">
                   <CloudRain size={14} strokeWidth={2.2} />
                 </span>
-
               </div>
             </div>
 
@@ -99,9 +81,7 @@ export function Projects() {
               <div>
                 <h3>GeoShield</h3>
 
-                <p>
-                  {t.projects.GeoShield.description}
-                </p>
+                <p>{t.projects.GeoShield.description}</p>
               </div>
 
               <div className="project-year">
@@ -116,9 +96,7 @@ export function Projects() {
               <span>Mapbox GL JS</span>
               <span>{t.projects.GeoShield.tags.responsive}</span>
             </div>
-
           </article>
-
 
           {/* ==============================
               PROJETO 02 — DU
@@ -128,7 +106,6 @@ export function Projects() {
             data-reveal
             style={{ "--reveal-delay": "120ms" } as CSSProperties}
           >
-
             <Link
               to="/projetos/du"
               className="project-card-link"
@@ -136,12 +113,8 @@ export function Projects() {
             />
 
             <div className="project-cover project-cover-lilac">
-
               <div className="project-placeholder">
-
-                <span className="project-number">
-                  PROJECT / 02
-                </span>
+                <span className="project-number">PROJECT / 02</span>
 
                 <h3>
                   DU
@@ -151,9 +124,7 @@ export function Projects() {
                   Universitário.
                 </h3>
 
-                <p>
-                  {t.projects.du.coverDescription}
-                </p>
+                <p>{t.projects.du.coverDescription}</p>
 
                 <div className="project-cover-phones" aria-hidden="true">
                   <PhoneFrame
@@ -167,18 +138,14 @@ export function Projects() {
                     className="phone--mini project-phone-front"
                   />
                 </div>
-
               </div>
-
             </div>
 
             <div className="project-info">
               <div>
                 <h3>DU — Driver Universitário</h3>
 
-                <p>
-                  {t.projects.du.description}
-                </p>
+                <p>{t.projects.du.description}</p>
               </div>
 
               <div className="project-year">
@@ -193,11 +160,8 @@ export function Projects() {
               <span>Expo</span>
               <span>Mobile</span>
             </div>
-
           </article>
-
         </div>
-
       </div>
     </section>
   );

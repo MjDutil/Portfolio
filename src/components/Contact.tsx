@@ -9,76 +9,45 @@ export function Contact() {
   return (
     <section className="contact" id="contato">
       <div className="contact-container">
-
         <div className="contact-card" data-reveal>
-
           {/* ESQUERDA */}
           <div className="contact-title-area">
-
             <h2>{t.contact.title}</h2>
 
             <span className="contact-spark" aria-hidden="true">
               ✦
             </span>
-
           </div>
 
           {/* CENTRO */}
           <div className="contact-content">
-
             <p>{t.contact.text}</p>
 
             <div className="contact-actions">
-
-              <a
-                href={`mailto:${profile.email}`}
-                className="contact-button"
-              >
+              <a href={`mailto:${profile.email}`} className="contact-button">
                 {t.contact.button}
                 <ArrowRight size={16} />
               </a>
 
               <div className="contact-socials">
-
-                <a
-                  href={profile.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub"
-                >
+                <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
                   <FaGithub size={19} />
                 </a>
 
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                >
+                <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <FaLinkedinIn size={18} />
                 </a>
 
-                <a
-                  href={`mailto:${profile.email}`}
-                  aria-label="E-mail"
-                >
+                <a href={`mailto:${profile.email}`} aria-label="E-mail">
                   <Mail size={19} />
                 </a>
-
               </div>
-
             </div>
-
           </div>
 
           {/* DIREITA — REFERÊNCIA TAYLOR */}
           <div className="contact-ribbon-area">
-
-            <svg
-              className="contact-ribbon"
-              viewBox="200 -5 500 260"
-              aria-hidden="true"
-            >
+            <svg className="contact-ribbon" viewBox="200 -5 500 260" aria-hidden="true">
               <defs>
                 <path
                   id="friendship-ribbon-path"
@@ -120,20 +89,13 @@ export function Contact() {
                 dominantBaseline="middle"
                 transform="translate(0 1)"
               >
-                <textPath
-                  href="#friendship-ribbon-path"
-                  startOffset="50%"
-                >
+                <textPath href="#friendship-ribbon-path" startOffset="50%">
                   MAKE THE FRIENDSHIP BRACELETS WITH YOUR WORK ♡
                 </textPath>
               </text>
-
             </svg>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

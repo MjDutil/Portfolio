@@ -23,21 +23,10 @@ export function Header() {
   return (
     <header className={`header ${menuOpen ? "header--menu-open" : ""}`}>
       <div className="header-container">
-
         {/* LOGO */}
 
-        <Link
-          to="/"
-          className="header-logo"
-          aria-label="Maria Júlia Dutil - Início"
-        >
-          <img
-            src={mirrorball}
-            alt=""
-            className="header-logo-image"
-            width={40}
-            height={40}
-          />
+        <Link to="/" className="header-logo" aria-label="Maria Júlia Dutil - Início">
+          <img src={mirrorball} alt="" className="header-logo-image" width={40} height={40} />
         </Link>
 
         {/* NAVEGAÇÃO */}
@@ -48,33 +37,22 @@ export function Header() {
           aria-label={t.header.navigationLabel}
           onClick={() => setMenuOpen(false)}
         >
+          <Link to="/#projetos">{t.header.work}</Link>
 
-          <Link to="/#projetos">
-            {t.header.work}
-          </Link>
-
-          <Link to="/#sobre">
-            {t.header.about}
-          </Link>
+          <Link to="/#sobre">{t.header.about}</Link>
 
           <Link to="/#contato" className="header-nav-cta">
             {t.header.contact}
             <ArrowRight size={16} />
           </Link>
-
         </nav>
 
         {/* LADO DIREITO */}
 
         <div className="header-right">
-
           {/* SELETOR DE IDIOMAS */}
 
-          <div
-            className="language-switch"
-            role="group"
-            aria-label={t.header.languageSelector}
-          >
+          <div className="language-switch" role="group" aria-label={t.header.languageSelector}>
             <button
               type="button"
               className={language === "pt" ? "active" : ""}
@@ -84,10 +62,7 @@ export function Header() {
               PT
             </button>
 
-            <span
-              className="language-divider"
-              aria-hidden="true"
-            />
+            <span className="language-divider" aria-hidden="true" />
 
             <button
               type="button"
@@ -101,10 +76,7 @@ export function Header() {
 
           {/* CONTATO */}
 
-          <Link
-            to="/#contato"
-            className="header-cta"
-          >
+          <Link to="/#contato" className="header-cta">
             {t.header.contact}
 
             <ArrowRight size={16} />
@@ -122,9 +94,7 @@ export function Header() {
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-
         </div>
-
       </div>
     </header>
   );

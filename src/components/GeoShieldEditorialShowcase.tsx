@@ -12,7 +12,9 @@ export function GeoShieldEditorialShowcase() {
       <div className="gs-showcase-copy">
         <h1 id="geoshield-title" className="gs-showcase-title">
           {content.title}
-          <span className="gs-showcase-title-spark" aria-hidden="true">✦</span>
+          <span className="gs-showcase-title-spark" aria-hidden="true">
+            ✦
+          </span>
         </h1>
 
         <p className="gs-showcase-subtitle">{content.subtitle}</p>
@@ -40,7 +42,9 @@ export function GeoShieldEditorialShowcase() {
       </div>
 
       <div className="gs-showcase-media">
-        <span className="gs-showcase-spark" aria-hidden="true">✦</span>
+        <span className="gs-showcase-spark" aria-hidden="true">
+          ✦
+        </span>
 
         {/* Card de trás: aparece deslocado para baixo e para a direita. */}
         <figure className="gs-showcase-card gs-showcase-card--back">

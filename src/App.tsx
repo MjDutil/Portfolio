@@ -19,7 +19,6 @@ import { useReveal } from "./hooks/useReveal";
 // PÁGINA INICIAL DO PORTFÓLIO
 // ========================================
 
-
 function ScrollToSection() {
   const { pathname, hash } = useLocation();
 
@@ -34,16 +33,12 @@ function ScrollToSection() {
 
     // Localiza a seção indicada na URL.
 
-    const sectionId = decodeURIComponent(
-      hash.substring(1)
-    );
+    const sectionId = decodeURIComponent(hash.substring(1));
 
     // Aguarda a página de destino ser renderizada.
 
     const frame = requestAnimationFrame(() => {
-      const section = document.getElementById(
-        sectionId
-      );
+      const section = document.getElementById(sectionId);
 
       if (section) {
         section.scrollIntoView({
@@ -54,7 +49,6 @@ function ScrollToSection() {
     });
 
     return () => cancelAnimationFrame(frame);
-
   }, [pathname, hash]);
 
   return null;
@@ -89,21 +83,11 @@ function App() {
     <>
       <ScrollToSection />
       <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
+        <Route path="/" element={<Home />} />
 
-        <Route
-          path="/projetos/geoshield"
-          element={<GeoShield />}
-        />
+        <Route path="/projetos/geoshield" element={<GeoShield />} />
 
-        <Route
-          path="/projetos/du"
-          element={<Du />}
-        />
-
+        <Route path="/projetos/du" element={<Du />} />
       </Routes>
     </>
   );

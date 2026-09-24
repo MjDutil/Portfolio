@@ -17,7 +17,6 @@ export function GeoShield() {
       <Header />
 
       <main className="geoshield-page">
-
         {/* Apresentação: título à esquerda e duas capturas sobrepostas à direita. */}
         <section className="geoshield-hero" aria-labelledby="geoshield-title">
           <div className="geoshield-hero-circle" aria-hidden="true" />
@@ -31,22 +30,16 @@ export function GeoShield() {
           </svg>
 
           <div className="geoshield-container">
-
             {/* Identificação do projeto e botão de retorno */}
 
             <div className="geoshield-hero-top">
               <div className="geoshield-hero-eyebrow">
-                <span className="geoshield-hero-number">
-                  01 / 02
-                </span>
+                <span className="geoshield-hero-number">01 / 02</span>
 
                 <span>{content.category}</span>
               </div>
 
-              <Link
-                to="/#projetos"
-                className="geoshield-back"
-              >
+              <Link to="/#projetos" className="geoshield-back">
                 <ArrowLeft size={17} />
                 <span>{content.back}</span>
               </Link>
@@ -99,7 +92,9 @@ export function GeoShield() {
                 </Link>
               </div>
 
-              <span className="gs-next-mark" aria-hidden="true">DU.</span>
+              <span className="gs-next-mark" aria-hidden="true">
+                DU.
+              </span>
             </div>
           </div>
         </section>

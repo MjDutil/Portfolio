@@ -13,11 +13,11 @@ type Folder = {
 
 // Cada ficha tem um tom pastel da paleta do portfólio.
 const folders: Folder[] = [
-  { key: "project", color: "#e5eee8" },     // sálvia
-  { key: "creative", color: "#f6e6dd" },    // pêssego
+  { key: "project", color: "#e5eee8" }, // sálvia
+  { key: "creative", color: "#f6e6dd" }, // pêssego
   { key: "development", color: "#e2e9f5" }, // azul-névoa
-  { key: "mapbox", color: "#ebe5f7" },      // lilás
-  { key: "learned", color: "#f7eed2" },     // manteiga
+  { key: "mapbox", color: "#ebe5f7" }, // lilás
+  { key: "learned", color: "#f7eed2" }, // manteiga
 ];
 
 // Posição (em %) dos números sobre a captura do mapa, na ficha 04.
@@ -100,7 +100,9 @@ export function GeoShieldFolders() {
               <p>{c.intro}</p>
 
               <dl className="gs-spec" aria-label={c.specTitle}>
-                <span className="gs-spec-title" aria-hidden="true">{c.specTitle}</span>
+                <span className="gs-spec-title" aria-hidden="true">
+                  {c.specTitle}
+                </span>
                 {c.spec.map((row) => (
                   <div className="gs-spec-row" key={row.key}>
                     <dt>{row.key}</dt>
@@ -199,7 +201,9 @@ export function GeoShieldFolders() {
             <figure className="gs-code">
               <figcaption className="gs-code-top">
                 <span className="gs-code-dots" aria-hidden="true">
-                  <span /><span /><span />
+                  <span />
+                  <span />
+                  <span />
                 </span>
                 <span className="gs-code-file">{c.codeFile}</span>
                 <span className="gs-code-note">{copy.simplified}</span>
@@ -311,7 +315,9 @@ export function GeoShieldFolders() {
             {folders.map((folder, index) => (
               <button
                 key={folder.key}
-                ref={(element) => { tabRefs.current[index] = element; }}
+                ref={(element) => {
+                  tabRefs.current[index] = element;
+                }}
                 type="button"
                 role="tab"
                 id={`gs-folder-tab-${folder.key}`}

@@ -28,9 +28,7 @@ export function PhoneFrame({ src, label, className = "", style, priority }: Phon
             <span className="phone-placeholder-label">{label}</span>
 
             {/* Só aparece rodando localmente (npm run dev), para lembrar o nome do arquivo */}
-            {import.meta.env.DEV && (
-              <code className="phone-placeholder-file">public{src}</code>
-            )}
+            {import.meta.env.DEV && <code className="phone-placeholder-file">public{src}</code>}
           </div>
         ) : (
           <img

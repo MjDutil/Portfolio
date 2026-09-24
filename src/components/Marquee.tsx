@@ -15,7 +15,9 @@ export function Marquee() {
           className={`marquee-item ${item.serif ? "marquee-item--serif" : ""}`}
         >
           {item.text}
-          <span className="marquee-star" aria-hidden="true">✦</span>
+          <span className="marquee-star" aria-hidden="true">
+            ✦
+          </span>
         </span>
       ))}
     </div>

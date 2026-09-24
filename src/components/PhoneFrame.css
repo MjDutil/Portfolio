@@ -110,9 +110,24 @@
   border-radius: 22px;
 }
 
-.phone--mini .phone-screen { border-radius: 17px; }
-.phone--mini .phone-island { top: 5px; height: 9px; }
-.phone--mini .phone-placeholder { gap: 6px; padding: 10px; }
-.phone--mini .phone-placeholder svg { width: 16px; height: 16px; }
-.phone--mini .phone-placeholder-label { font-size: 12px; }
-.phone--mini .phone-placeholder-file { display: none; }
+.phone--mini .phone-screen {
+  border-radius: 17px;
+}
+.phone--mini .phone-island {
+  top: 5px;
+  height: 9px;
+}
+.phone--mini .phone-placeholder {
+  gap: 6px;
+  padding: 10px;
+}
+.phone--mini .phone-placeholder svg {
+  width: 16px;
+  height: 16px;
+}
+.phone--mini .phone-placeholder-label {
+  font-size: 12px;
+}
+.phone--mini .phone-placeholder-file {
+  display: none;
+}

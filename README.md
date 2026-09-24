@@ -37,14 +37,14 @@ O build gera também um `404.html` (cópia do `index.html`), para que links dire
 A página `/projetos/du` já está pronta e mostra espaços reservados até as imagens existirem.
 Salve os prints (em pé, do jeito que aparecem no celular) em `public/projects/du/` com estes nomes:
 
-| Arquivo | Tela |
-|---|---|
-| `home.png` | Buscar motoristas (celular do meio, no topo e na capa da home) |
-| `chat.png` | Lista de conversas |
-| `tracking.png` | Rastreamento da corrida |
-| `finish.png` | Finalização + avaliação |
+| Arquivo                                         | Tela                                                                     |
+| ----------------------------------------------- | ------------------------------------------------------------------------ |
+| `home.png`                                      | Buscar motoristas (celular do meio, no topo e na capa da home)           |
+| `chat.png`                                      | Lista de conversas                                                       |
+| `tracking.png`                                  | Rastreamento da corrida                                                  |
+| `finish.png`                                    | Finalização + avaliação                                                  |
 | `signup-1-invite.png` … `signup-7-password.png` | Cadastro: convite, nome, apelido, contato, tratamento, nascimento, senha |
-| `offer-1-driver.png` … `offer-6-price.png` | Oferecer carona: CNH, carro, rota, datas, vagas, valor |
+| `offer-1-driver.png` … `offer-6-price.png`      | Oferecer carona: CNH, carro, rota, datas, vagas, valor                   |
 
 Os nomes completos, as cores do app, o trecho de código opcional e o link do repositório ficam em `src/data/du.ts`.
 Rodando `npm run dev`, cada espaço reservado mostra o caminho do arquivo que está faltando.

@@ -195,7 +195,6 @@
   cursor: pointer;
 }
 
-
 /* ======================================
    HERO
 ====================================== */
@@ -265,7 +264,7 @@
     minmax(210px, 0.6fr)
     minmax(250px, 0.9fr);
 
-    column-gap: 6px;
+  column-gap: 6px;
   align-items: start;
 }
 
@@ -465,10 +464,7 @@
 
   background: var(--sage);
 
-  border-radius:
-    50% 100% 190% 65%
-    /
-    50% 36% 45% 90%;
+  border-radius: 50% 100% 190% 65% / 50% 36% 45% 90%;
 
   transform: rotate(1deg);
 }
@@ -529,7 +525,6 @@
   }
 }
 
-
 /* ======================================
    CARDS
 ====================================== */
@@ -552,9 +547,7 @@
   align-items: start;
 
   /* Um único formato orgânico, repetido nos três cards */
-  border-radius:
-    34px 46px 38px 52px /
-    40px 34px 48px 36px;
+  border-radius: 34px 46px 38px 52px / 40px 34px 48px 36px;
 
   transition:
     translate 0.35s var(--ease-out),
@@ -626,8 +619,6 @@
   line-height: 1.4;
 }
 
-
-
 /* ======================================
    META
 ====================================== */
@@ -694,8 +685,6 @@
   line-height: 1.35;
   letter-spacing: 1px;
 }
-
-
 
 /* ======================================
    ANIMAÇÕES — ENTRADA DO HERO
@@ -1054,13 +1043,7 @@
 .project-cover-lilac {
   padding: 42px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #e8e1f7 0%,
-      var(--lilac) 55%,
-      var(--lilac-deep) 100%
-    );
+  background: linear-gradient(135deg, #e8e1f7 0%, var(--lilac) 55%, var(--lilac-deep) 100%);
 }
 
 .project-placeholder {
@@ -1127,7 +1110,9 @@
   rotate: -8deg;
   translate: 26px 10px;
 
-  transition: rotate 0.5s var(--ease-out), translate 0.5s var(--ease-out);
+  transition:
+    rotate 0.5s var(--ease-out),
+    translate 0.5s var(--ease-out);
 }
 
 .project-phone-front {
@@ -1196,7 +1181,6 @@
   font-size: 10px;
 }
 
-
 /* ======================================
    TOOLBOX
 ====================================== */
@@ -1215,7 +1199,6 @@
 
   margin: 0 auto;
 }
-
 
 /* ======================================
    TÍTULO
@@ -1245,7 +1228,6 @@
 
   letter-spacing: -2px;
 }
-
 
 /* ======================================
    DETALHE AO LADO DO TÍTULO
@@ -1278,7 +1260,6 @@
   background: #d7d1c8;
 }
 
-
 /* ======================================
    MANUSCRITO
 ====================================== */
@@ -1295,7 +1276,6 @@
 
   z-index: 2;
 }
-
 
 /* ======================================
    LISTA
@@ -1398,7 +1378,6 @@
   border-color: var(--lilac-deep);
 }
 
-
 /* ======================================
    ÍCONES
 ====================================== */
@@ -1413,7 +1392,6 @@
 
   flex-shrink: 0;
 }
-
 
 /* ======================================
    CONTACT
@@ -1453,11 +1431,8 @@
 
   background: #e9e5de;
 
-  border-radius:
-    28px 36px 30px 32px /
-    28px 32px 36px 30px;
+  border-radius: 28px 36px 30px 32px / 28px 32px 36px 30px;
 }
-
 
 /* ======================================
    TÍTULO
@@ -1509,7 +1484,6 @@
     opacity: 0.55;
   }
 }
-
 
 /* ======================================
    CENTRO
@@ -1574,7 +1548,6 @@
   background: var(--ink-soft);
 }
 
-
 /* REDES */
 
 .contact-socials {
@@ -1606,7 +1579,6 @@
 
   background: rgba(255, 255, 255, 0.55);
 }
-
 
 /* ======================================
    FAIXA TAYLOR
@@ -1671,7 +1643,6 @@
   border-top: 1px solid #d8d2c9;
 }
 
-
 /* ======================================
    IDENTIDADE
 ====================================== */
@@ -1720,7 +1691,6 @@
   white-space: nowrap;
 }
 
-
 /* ======================================
    FRASE CENTRAL
 ====================================== */
@@ -1742,7 +1712,6 @@
 
   color: #56514b;
 }
-
 
 /* ======================================
    NAVEGAÇÃO
@@ -1768,7 +1737,6 @@
 .footer-nav a:hover {
   opacity: 0.5;
 }
-
 
 /* ======================================
    ANO
@@ -2438,7 +2406,6 @@
   }
 }
 
-
 /* ========================================
    PROJECT CARD GEOSHIELD - CLICKABLE AREA
 ======================================== */
@@ -2521,7 +2488,6 @@
   background-size: 100% 1px;
 }
 
-
 /* Texto da capa do DU não passa por baixo dos celulares */
 .project-card--du .project-placeholder p {
   max-width: 52%;
@@ -2575,10 +2541,26 @@
 }
 
 /* Posições calculadas para ficar em cima dos marcadores reais da captura */
-.map-pin--green  { top: 40.4%; left: 52.7%; color: #16845a; }
-.map-pin--orange { top: 28.3%; left: 37%;   color: #e69a37; }
-.map-pin--red    { top: 82.5%; left: 73.6%; color: #dc6262; }
-.map-pin--blue   { top: 22.5%; left: 62.5%; color: #508fc8; }
+.map-pin--green {
+  top: 40.4%;
+  left: 52.7%;
+  color: #16845a;
+}
+.map-pin--orange {
+  top: 28.3%;
+  left: 37%;
+  color: #e69a37;
+}
+.map-pin--red {
+  top: 82.5%;
+  left: 73.6%;
+  color: #dc6262;
+}
+.map-pin--blue {
+  top: 22.5%;
+  left: 62.5%;
+  color: #508fc8;
+}
 
 /* Hover: o mapa se endireita e sobe, os marcadores "pulam" em sequência */
 .project-card--geoshield:hover .project-cover-map {
@@ -2590,9 +2572,15 @@
   translate: -50% calc(-50% - 8px);
 }
 
-.project-card--geoshield:hover .map-pin--orange { transition-delay: 0.06s; }
-.project-card--geoshield:hover .map-pin--blue   { transition-delay: 0.12s; }
-.project-card--geoshield:hover .map-pin--red    { transition-delay: 0.18s; }
+.project-card--geoshield:hover .map-pin--orange {
+  transition-delay: 0.06s;
+}
+.project-card--geoshield:hover .map-pin--blue {
+  transition-delay: 0.12s;
+}
+.project-card--geoshield:hover .map-pin--red {
+  transition-delay: 0.18s;
+}
 
 @media (max-width: 600px) {
   .project-cover-map {
