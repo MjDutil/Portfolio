@@ -11,8 +11,8 @@ import { Toolbox } from "./components/Toolbox";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
-import { GeoShield } from "./pages/geoShield";
-import { Du } from "./pages/du";
+import { GeoShield } from "./pages/GeoShield";
+import { Du } from "./pages/Du";
 import { useReveal } from "./hooks/useReveal";
 
 // ========================================
