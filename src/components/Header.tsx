@@ -25,7 +25,7 @@ export function Header() {
       <div className="header-container">
         {/* LOGO */}
 
-        <Link to="/" className="header-logo" aria-label="Maria Júlia Dutil - Início">
+        <Link to="/" className="header-logo" aria-label={t.header.logoLabel}>
           <img src={mirrorball} alt="" className="header-logo-image" width={40} height={40} />
         </Link>
 
@@ -39,7 +39,7 @@ export function Header() {
         >
           <Link to="/#projetos">{t.header.work}</Link>
 
-          <Link to="/#sobre">{t.header.about}</Link>
+          <Link to="/#tecnologias">{t.header.technologies}</Link>
 
           <Link to="/#contato" className="header-nav-cta">
             {t.header.contact}

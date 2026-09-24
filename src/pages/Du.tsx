@@ -256,7 +256,7 @@ export function Du() {
                   </div>
 
                   <div className="du-phone-with-note">
-                    <PhoneFrame src={duScreens.invite} label={c.start.phoneLabel} />
+                    <PhoneFrame src={duScreens.tracking} label={c.start.phoneLabel} />
                     <span className="handwritten du-note">{c.start.note}</span>
                   </div>
                 </div>

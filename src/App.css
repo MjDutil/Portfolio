@@ -134,6 +134,8 @@
 }
 
 .language-switch button {
+  position: relative;
+
   padding: 0;
 
   border: 0;
@@ -153,6 +155,14 @@
   transition:
     color 0.2s ease,
     opacity 0.2s ease;
+}
+
+/* Aumenta a área de toque sem mudar o visual (o texto tem só 10px) */
+.language-switch button::after {
+  content: "";
+
+  position: absolute;
+  inset: -10px -6px;
 }
 
 .language-switch button:hover {
@@ -1043,6 +1053,9 @@
 .project-cover-lilac {
   padding: 42px;
 
+  /* Os tamanhos dentro da capa acompanham a largura dela (unidade cqi) */
+  container-type: inline-size;
+
   background: linear-gradient(135deg, #e8e1f7 0%, var(--lilac) 55%, var(--lilac-deep) 100%);
 }
 
@@ -1052,7 +1065,7 @@
   width: 100%;
   height: 100%;
 
-  padding: 34px;
+  padding: clamp(18px, 7cqi, 34px);
 
   border-radius: 20px;
 
@@ -1064,7 +1077,7 @@
 .project-number {
   display: block;
 
-  margin-bottom: 60px;
+  margin-bottom: clamp(16px, 12cqi, 60px);
 
   font-size: 9px;
   font-weight: 600;
@@ -1077,7 +1090,7 @@
 .project-placeholder h3 {
   font-family: var(--font-serif);
 
-  font-size: clamp(40px, 4vw, 64px);
+  font-size: clamp(30px, 10cqi, 64px);
   font-weight: 400;
 
   line-height: 0.92;
@@ -1098,12 +1111,26 @@
 
 /* CELULARES NA CAPA DO DU */
 .project-cover-phones {
+  --phone-w: clamp(60px, 24cqi, 118px);
+
   position: absolute;
-  right: 34px;
-  bottom: -70px;
+  right: clamp(14px, 7cqi, 34px);
+  bottom: calc(var(--phone-w) * -0.6);
 
   display: flex;
   align-items: flex-end;
+}
+
+.project-cover-phones .phone--mini {
+  width: var(--phone-w);
+}
+
+/* Capa estreita (duas colunas em telas médias, ou celular): a frase da capa sai,
+   porque não cabe junto com os celulares e já aparece na descrição abaixo */
+@container (max-width: 420px) {
+  .project-card--du .project-placeholder p {
+    display: none;
+  }
 }
 
 .project-phone-back {
@@ -1782,28 +1809,18 @@
   .info-card {
     flex: 1;
   }
-}
 
-/* TABLET — PROJECTS, CONTACT E FOOTER */
-@media (max-width: 900px) {
-  .projects-heading {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-heading-detail {
-    display: none;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
+  /* O card de contato vira uma coluna antes que as três colunas estourem a largura */
   .contact-card {
     grid-template-columns: 1fr;
   }
 
   .contact-title-area {
     padding: 38px 38px 10px;
+  }
+
+  .contact-spark {
+    right: 38px;
   }
 
   .contact-content {
@@ -1822,6 +1839,21 @@
     left: 0;
     right: auto;
     top: 0;
+  }
+}
+
+/* TABLET — PROJECTS, CONTACT E FOOTER */
+@media (max-width: 900px) {
+  .projects-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-heading-detail {
+    display: none;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer-container {
@@ -2207,15 +2239,6 @@
     padding-top: 50px;
   }
 
-  .project-cover-phones {
-    right: 16px;
-    bottom: -90px;
-  }
-
-  .project-cover-phones .phone--mini {
-    width: 92px;
-  }
-
   .project-placeholder h3 {
     position: relative;
     z-index: 1;
@@ -2277,6 +2300,10 @@
     line-height: 0.92;
   }
 
+  .contact-spark {
+    right: 4px;
+  }
+
   .contact-content {
     width: 100%;
     padding: 0;
@@ -2297,22 +2324,24 @@
     gap: 18px;
   }
 
+  /* A faixa ocupa a largura toda do card e mantém a proporção do desenho,
+     assim o texto aparece inteiro em qualquer celular */
   .contact-ribbon-area {
     position: relative;
-    width: calc(100% + 100px);
-    height: 250px;
-    min-height: 250px;
-    margin-left: -40px;
+    width: calc(100% + 44px);
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 500 / 260;
+    margin-left: -22px;
     overflow: hidden;
   }
 
   .contact-ribbon {
     position: absolute;
-    width: 125%;
+    inset: 0;
+    width: 100%;
     height: 100%;
     max-width: none;
-    left: -20%;
-    top: -4px;
     transform: none;
   }
 

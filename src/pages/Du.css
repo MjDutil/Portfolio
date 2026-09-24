@@ -1029,6 +1029,32 @@
   translate: 0 30px;
 }
 
+/* Faixa de status mais fina nestes celulares, para os botões
+   do fim da tela não ficarem colados na borda. */
+:is(.du-hero-phones, .du-phone-with-note, .du-dev-phones) .phone-screen {
+  padding-top: 22px;
+}
+
+:is(.du-hero-phones, .du-phone-with-note, .du-dev-phones) .phone-island {
+  top: 5px;
+  height: 14px;
+  width: 30%;
+}
+
+:is(.du-hero-phones, .du-phone-with-note, .du-dev-phones) .phone-status {
+  top: 7px;
+  left: 18px;
+  right: 16px;
+  font-size: 8.5px;
+}
+
+:is(.du-hero-phones, .du-phone-with-note, .du-dev-phones) .phone-battery {
+  width: 15px;
+  height: 7.5px;
+  border-width: 1.2px;
+  border-radius: 2px;
+}
+
 .du-code {
   width: 100%;
   margin: 0;

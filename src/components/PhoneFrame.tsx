@@ -22,6 +22,11 @@ export function PhoneFrame({ src, label, className = "", style, priority }: Phon
       <div className="phone-screen">
         <span className="phone-island" aria-hidden="true" />
 
+        <div className="phone-status" aria-hidden="true">
+          <span>9:41</span>
+          <span className="phone-battery" />
+        </div>
+
         {missing ? (
           <div className="phone-placeholder" role="img" aria-label={label}>
             <Smartphone size={26} strokeWidth={1.6} aria-hidden="true" />

@@ -2,12 +2,13 @@ export const translations = {
   pt: {
     header: {
       work: "Projetos",
-      about: "Sobre",
+      technologies: "Tecnologias",
       contact: "Vamos conversar",
       languageSelector: "Selecionar idioma",
       navigationLabel: "Navegação principal",
       openMenu: "Abrir menu",
       closeMenu: "Fechar menu",
+      logoLabel: "Maria Júlia Dutil - Início",
     },
 
     hero: {
@@ -474,17 +475,19 @@ export const translations = {
       technologies: "Tecnologias",
       contact: "Contato",
     },
+    backToTop: "Voltar ao topo",
   },
 
   en: {
     header: {
       work: "Work",
-      about: "About",
+      technologies: "Technologies",
       contact: "Let's Talk",
       languageSelector: "Select language",
       navigationLabel: "Main navigation",
       openMenu: "Open menu",
       closeMenu: "Close menu",
+      logoLabel: "Maria Júlia Dutil - Home",
     },
     hero: {
       hello: "HELLO, I'M",
@@ -949,5 +952,6 @@ export const translations = {
       technologies: "Technologies",
       contact: "Contact",
     },
+    backToTop: "Back to top",
   },
 };

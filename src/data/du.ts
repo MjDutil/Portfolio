@@ -19,27 +19,27 @@ export const duScreens = {
   tracking: `${folder}/tracking.png`, // Rastreamento da corrida
 
   // Parada 01 — ponto de partida
-  invite: `${folder}/signup-1-invite.png`,
+  invite: `${folder}/invite.png`,
 
   // Parada 03 — cadastro em 7 etapas (na ordem do app)
   signup: [
-    `${folder}/signup-1-invite.png`,
-    `${folder}/signup-2-name.png`,
-    `${folder}/signup-3-nickname.png`,
-    `${folder}/signup-4-contact.png`,
-    `${folder}/signup-5-treatment.png`,
-    `${folder}/signup-6-birthdate.png`,
-    `${folder}/signup-7-password.png`,
+    `${folder}/invite.png`,
+    `${folder}/name.png`,
+    `${folder}/nickname.png`,
+    `${folder}/contact.png`,
+    `${folder}/treatment.png`,
+    `${folder}/birthdate.png`,
+    `${folder}/password.png`,
   ],
 
   // Parada 04 — oferecer carona em 6 etapas (na ordem do app)
   offer: [
-    `${folder}/offer-1-driver.png`,
-    `${folder}/offer-2-car.png`,
-    `${folder}/offer-3-route.png`,
-    `${folder}/offer-4-dates.png`,
-    `${folder}/offer-5-passengers.png`,
-    `${folder}/offer-6-price.png`,
+    `${folder}/driver.png`,
+    `${folder}/car.png`,
+    `${folder}/route.png`,
+    `${folder}/dates.png`,
+    `${folder}/passengers.png`,
+    `${folder}/price.png`,
   ],
 
   // Parada 05 — desenvolvimento

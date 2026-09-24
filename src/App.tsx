@@ -10,6 +10,7 @@ import { Projects } from "./components/Projects";
 import { Toolbox } from "./components/Toolbox";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { BackToTop } from "./components/BackToTop";
 
 import { GeoShield } from "./pages/GeoShield";
 import { Du } from "./pages/Du";
@@ -20,7 +21,9 @@ import { useReveal } from "./hooks/useReveal";
 // ========================================
 
 function ScrollToSection() {
-  const { pathname, hash } = useLocation();
+  // A "key" muda a cada clique, mesmo quando o endereço é o mesmo.
+  // Assim, clicar de novo em "Projetos" (ou no logo) volta a rolar até a seção.
+  const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
     // Se não houver uma seção específica,
@@ -49,7 +52,7 @@ function ScrollToSection() {
     });
 
     return () => cancelAnimationFrame(frame);
-  }, [pathname, hash]);
+  }, [pathname, hash, key]);
 
   return null;
 }
@@ -82,6 +85,7 @@ function App() {
   return (
     <>
       <ScrollToSection />
+      <BackToTop />
       <Routes>
         <Route path="/" element={<Home />} />
 
