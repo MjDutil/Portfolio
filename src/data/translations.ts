@@ -345,7 +345,7 @@ export const translations = {
           { key: "Stack", value: "React Native · Expo · Expo Router · TypeScript · Zustand" },
         ],
         phoneLabel: "Código de convite",
-        note: "invite only ♡",
+        note: "invite only",
       },
       creative: {
         title: "Uma identidade para o app.",
@@ -822,7 +822,7 @@ export const translations = {
           { key: "Stack", value: "React Native · Expo · Expo Router · TypeScript · Zustand" },
         ],
         phoneLabel: "Invite code",
-        note: "invite only ♡",
+        note: "invite only",
       },
       creative: {
         title: "An identity for the app.",
